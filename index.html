@@ -3,6 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="author" content="Emerick Wbg">
 <meta name="theme-color" content="#071A26">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="fr_FR">
@@ -133,6 +134,18 @@ h1,h2,h3,h4{
 }
 .nav a:hover{ color:var(--craie); border-color:var(--trait); }
 .nav a.actif{ color:var(--encre); background:var(--ambre); border-color:var(--ambre); font-weight:600; }
+
+.langues{
+  display:flex; margin-left:14px; border:1px solid var(--trait); border-radius:var(--rayon); overflow:hidden; flex-shrink:0;
+}
+.langues button{
+  background:none; border:none; border-right:1px solid var(--trait); cursor:pointer;
+  font-family:var(--mno); font-size:11px; letter-spacing:.12em; padding:8px 11px;
+  color:var(--craie-3); transition:.15s;
+}
+.langues button:last-child{ border-right:none; }
+.langues button:hover{ color:var(--craie); background:var(--encre-3); }
+.langues button[aria-current="true"]{ background:var(--ambre); color:var(--encre); font-weight:600; }
 
 .btn-menu{
   display:none; margin-left:auto; background:none; border:1px solid var(--trait);
@@ -346,6 +359,75 @@ select.filtre-select{
 .jalon span{ font-size:14px; color:var(--craie-2); line-height:1.5; }
 .jalon::before{ content:''; position:absolute; left:49px; top:7px; width:7px; height:7px; border-radius:50%; background:var(--ambre); }
 
+/* ---------- Coût d'usage ---------- */
+.cout{
+  margin-top:22px; background:var(--encre-2); border:1px solid var(--trait); border-radius:var(--rayon);
+  display:grid; grid-template-columns:minmax(0,1fr) auto; gap:0 32px; padding:26px 28px 22px;
+}
+.cout-tete h3{ font-size:17px; letter-spacing:.05em; }
+.cout-tete p{ margin:7px 0 0; font-family:var(--mno); font-size:11.5px; color:var(--craie-3); }
+.cout-chiffre{ text-align:right; grid-row:1; grid-column:2; }
+.cout-chiffre b{ display:block; font-family:var(--dsp); font-weight:700; font-size:38px; line-height:1; color:var(--ambre); }
+.cout-chiffre span{ font-family:var(--mno); font-size:11px; letter-spacing:.16em; text-transform:uppercase; color:var(--craie-3); }
+.cout-chiffre em{ display:block; font-style:normal; font-family:var(--mno); font-size:11.5px; color:var(--craie-2); margin-top:5px; }
+.cout-postes{
+  grid-column:1 / -1; list-style:none; margin:22px 0 0; padding:0;
+  display:grid; grid-template-columns:repeat(auto-fit,minmax(190px,1fr)); gap:1px; background:var(--trait);
+  border:1px solid var(--trait);
+}
+.cout-postes li{ background:var(--encre-2); padding:12px 14px; }
+.cout-postes span{ display:block; font-family:var(--mno); font-size:10px; letter-spacing:.12em; text-transform:uppercase; color:var(--craie-3); }
+.cout-postes b{ display:block; font-family:var(--mno); font-size:17px; margin:4px 0 3px; }
+.cout-postes em{ font-style:normal; font-size:11.5px; color:var(--craie-3); }
+.cout-note{ grid-column:1 / -1; margin:16px 0 0; font-size:12px; color:var(--craie-3); line-height:1.6; }
+
+.finition-lien{ font-family:var(--mno); font-size:12px; color:var(--craie-3); margin:8px 0 0; }
+.finition-lien a{ color:var(--ambre); border-bottom:1px solid var(--ambre-sourd); }
+
+/* ---------- Chronologie ---------- */
+.frise-densite{
+  display:flex; align-items:flex-end; gap:3px; height:96px; margin-bottom:36px;
+  padding:0 0 4px; border-bottom:1px solid var(--trait); overflow-x:auto;
+}
+.frise-densite button{
+  flex:1 1 44px; min-width:38px; height:100%; background:none; border:none; cursor:pointer;
+  display:flex; flex-direction:column; justify-content:flex-end; align-items:center; gap:6px; padding:0;
+}
+.fd-barre{ width:100%; background:var(--trait-fort); border-radius:1px; transition:background .18s; }
+.frise-densite button:hover .fd-barre{ background:var(--craie-3); }
+.frise-densite button[aria-pressed="true"] .fd-barre{ background:var(--ambre); }
+.fd-an{ font-family:var(--mno); font-size:10px; letter-spacing:.08em; color:var(--craie-3); }
+.frise-densite button[aria-pressed="true"] .fd-an{ color:var(--ambre); }
+.fd-raz{ flex:0 0 auto !important; font-family:var(--mno); font-size:10px; letter-spacing:.12em;
+  text-transform:uppercase; color:var(--craie-3); align-self:flex-end !important; padding-bottom:2px !important; }
+
+.chrono{ list-style:none; margin:0; padding:0; position:relative; }
+.chrono::before{ content:''; position:absolute; left:78px; top:6px; bottom:6px; width:1px; background:var(--trait); }
+.chrono-an{ display:grid; grid-template-columns:78px 1fr; gap:26px; padding-bottom:20px; position:relative; }
+.chrono-date{
+  font-family:var(--dsp); font-weight:700; font-size:20px; letter-spacing:.03em;
+  color:var(--ambre); text-align:right; padding-top:2px;
+}
+.chrono-an::before{ content:''; position:absolute; left:75px; top:11px; width:7px; height:7px; border-radius:50%; background:var(--ambre); }
+.chrono-faits{ display:grid; gap:8px; }
+.chrono-fait{
+  display:block; background:var(--encre-2); border:1px solid var(--trait);
+  border-radius:var(--rayon); padding:11px 15px; transition:.18s;
+}
+.chrono-fait:hover{ border-color:var(--trait-fort); background:var(--encre-3); }
+.cf-moto{ display:block; font-family:var(--mno); font-size:10px; letter-spacing:.16em; text-transform:uppercase; color:var(--craie-3); }
+.chrono-fait:hover .cf-moto{ color:var(--ambre); }
+.cf-texte{ display:block; font-size:14.5px; color:var(--craie-2); margin-top:4px; line-height:1.5; }
+
+@media (max-width:600px){
+  .cout{ grid-template-columns:1fr; }
+  .cout-chiffre{ text-align:left; grid-row:2; grid-column:1; margin-top:14px; }
+  .chrono::before{ left:42px; }
+  .chrono-an{ grid-template-columns:42px 1fr; gap:16px; }
+  .chrono-an::before{ left:39px; }
+  .chrono-date{ font-size:15px; }
+}
+
 /* ---------- Glossaire ---------- */
 .glo-groupe{ margin-bottom:44px; }
 .glo-tete{ border-bottom:1px solid var(--trait); padding-bottom:14px; margin-bottom:22px; }
@@ -425,9 +507,29 @@ tr.sep th, tr.sep td{ background:var(--encre-3); font-family:var(--mno); font-si
 .pied-int{ display:flex; justify-content:space-between; gap:24px; flex-wrap:wrap; align-items:flex-end; }
 .pied p{ font-family:var(--mno); font-size:11.5px; color:var(--craie-3); margin:0; max-width:52ch; line-height:1.7; }
 
+.mention{
+  margin-top:34px; padding-top:22px; border-top:1px solid var(--trait);
+  display:flex; justify-content:space-between; align-items:baseline; gap:26px; flex-wrap:wrap;
+}
+.mention-auteur{
+  font-family:var(--mno) !important; font-size:12px !important;
+  letter-spacing:.1em; color:var(--craie-3) !important; flex:0 0 auto;
+}
+.mention-auteur b{
+  font-family:var(--dsp); font-weight:700; font-size:15px;
+  letter-spacing:.06em; text-transform:uppercase; color:var(--ambre); margin-left:7px;
+}
+.mention-droits{ flex:1 1 380px; max-width:66ch !important; font-size:11px !important; }
+
+@media (max-width:600px){
+  .mention{ flex-direction:column; gap:12px; }
+}
+
 /* ---------- Adaptations ---------- */
 @media (max-width:940px){
   .hero-grille, .modele-tete{ grid-template-columns:1fr; gap:32px; }
+  .langues{ margin-left:auto; order:2; }
+  .btn-menu{ margin-left:12px; order:3; }
   .nav{ display:none; }
   .nav.deploye{
     display:flex; position:absolute; top:66px; left:0; right:0; flex-direction:column; gap:0;
@@ -437,6 +539,52 @@ tr.sep th, tr.sep td{ background:var(--encre-3); font-family:var(--mno); font-si
   .tech-col{ border-right:none; border-bottom:1px solid var(--trait); }
   .histoire{ grid-template-columns:1fr; gap:34px; }
 }
+/* ---------- Comparateur sur petit écran ----------
+   La colonne figée mangeait la moitié de la largeur et cachait les valeurs.
+   Le tableau se réorganise donc par caractéristique : un bloc par ligne,
+   les motos empilées dessous. Plus de défilement latéral, vue d'ensemble
+   retrouvée. */
+.tableau-enveloppe:has(.empile){ border:none; overflow:visible; }
+table.comparatif.empile{ min-width:0; display:block; }
+table.comparatif.empile thead{ display:none; }
+table.comparatif.empile tbody{ display:block; }
+
+table.comparatif.empile tr{
+    display:block; background:var(--encre-2);
+    border:1px solid var(--trait); border-radius:var(--rayon); margin-bottom:10px;
+  }
+table.comparatif.empile tbody th{
+    display:block; position:static; width:auto;
+    background:var(--encre-3); border-bottom:1px solid var(--trait);
+    font-family:var(--mno); font-size:10px; letter-spacing:.16em;
+    text-transform:uppercase; color:var(--craie-2); padding:9px 14px;
+  }
+table.comparatif.empile td{
+    display:flex; justify-content:space-between; align-items:baseline; gap:14px;
+    background:none; border-bottom:1px solid rgba(28,69,96,.55);
+    padding:9px 14px; text-align:right;
+  }
+table.comparatif.empile td:last-child{ border-bottom:none; }
+table.comparatif.empile td::before{
+    content:attr(data-moto); flex:0 0 auto; text-align:left;
+    font-family:var(--txt); font-size:12.5px; color:var(--craie-3);
+  }
+table.comparatif.empile td.meilleur::after{ margin-left:5px; }
+
+/* Les intertitres de groupe redeviennent de simples bandeaux. */
+table.comparatif.empile tr.sep{ background:none; border:none; margin:22px 0 8px; }
+table.comparatif.empile tr.sep th{
+    background:none; border:none; color:var(--ambre); padding:0;
+    font-size:11px; letter-spacing:.2em;
+  }
+table.comparatif.empile tr.sep td{ display:none; }
+
+@media (max-width:760px){
+  .compare-schemas{ grid-template-columns:repeat(auto-fit,minmax(148px,1fr)); gap:8px; }
+  .compare-schema figcaption{ font-size:10px; }
+  .legende{ align-items:flex-start; }
+}
+
 @media (max-width:600px){
   .contenu, .entete-int, .garage-int{ padding-left:16px; padding-right:16px; }
   .compteurs{ flex-wrap:wrap; }
@@ -452,7 +600,7 @@ tr.sep th, tr.sep td{ background:var(--encre-3); font-family:var(--mno); font-si
 </head>
 <body>
 
-<a class="saut" href="#app">Aller au contenu</a>
+<a class="saut" href="#app">Aller au contenu / Skip to content</a>
 
 <div class="enveloppe">
 
@@ -464,12 +612,17 @@ tr.sep th, tr.sep td{ background:var(--encre-3); font-family:var(--mno); font-si
       </a>
       <button class="btn-menu" aria-label="Ouvrir le menu">Menu</button>
       <nav class="nav" aria-label="Navigation principale">
-        <a href="#/">Accueil</a>
-        <a href="#/marques" data-prefixe="#/marque">Marques</a>
-        <a href="#/modeles" data-prefixe="#/modele">Catalogue</a>
-        <a href="#/comparateur">Comparateur</a>
-        <a href="#/glossaire">Glossaire</a>
+        <a href="#/" data-fr="Accueil">Accueil</a>
+        <a href="#/marques" data-prefixe="#/marque" data-fr="Marques">Marques</a>
+        <a href="#/modeles" data-prefixe="#/modele" data-fr="Catalogue">Catalogue</a>
+        <a href="#/comparateur" data-fr="Comparateur">Comparateur</a>
+        <a href="#/chronologie" data-fr="Chronologie">Chronologie</a>
+        <a href="#/glossaire" data-fr="Glossaire">Glossaire</a>
       </nav>
+      <div class="langues" role="group" aria-label="Langue du site / Site language">
+        <button data-langue="fr" lang="fr">FR</button>
+        <button data-langue="en" lang="en">EN</button>
+      </div>
     </div>
   </header>
 
@@ -478,19 +631,20 @@ tr.sep th, tr.sep td{ background:var(--encre-3); font-family:var(--mno); font-si
   <footer class="pied">
     <div class="contenu pied-int">
       <div>
-        <p>
-          Motothèque est une encyclopédie tenue par un passionné, sans publicité ni partenariat.
-          Les chiffres sont relevés dans les fiches constructeur, au lancement de chaque année-modèle.
-          Ils varient selon le marché et l'année exacte. Vérifiez-les avant tout achat.
-          Une erreur, un modèle manquant ? Les corrections sont les bienvenues.
-        </p>
+        <p data-fr="Motothèque est une encyclopédie tenue par un passionné, sans publicité ni partenariat. Les chiffres sont relevés dans les fiches constructeur, au lancement de chaque année-modèle. Ils varient selon le marché et l'année exacte. Vérifiez-les avant tout achat. Une erreur, un modèle manquant ? Les corrections sont les bienvenues.">Motothèque est une encyclopédie tenue par un passionné, sans publicité ni partenariat. Les chiffres sont relevés dans les fiches constructeur, au lancement de chaque année-modèle. Ils varient selon le marché et l'année exacte. Vérifiez-les avant tout achat. Une erreur, un modèle manquant ? Les corrections sont les bienvenues.</p>
       </div>
       <div>
-        <p>
-          Les motos sont représentées par un schéma technique au trait, coté avec les mesures
-          réelles de l'année-modèle affichée. Pour afficher une photo à la place, renseignez le champ
-          <span style="color:var(--ambre)">photo</span> du modèle dans les données.
+        <p data-fr="Chaque moto est représentée par un schéma technique au trait, coté avec les mesures réelles de l'année-modèle affichée. Ces dessins ont été réalisés spécialement pour ce site.">Chaque moto est représentée par un schéma technique au trait, coté avec les mesures réelles de l'année-modèle affichée. Ces dessins ont été réalisés spécialement pour ce site.</p>
+      </div>
+    </div>
+
+    <div class="contenu">
+      <div class="mention">
+        <p class="mention-auteur">
+          <span data-fr="Site créé par">Site créé par</span>
+          <b>Emerick Wbg</b>
         </p>
+        <p class="mention-droits" data-fr="© 2026 Emerick Wbg. Tous droits réservés. Les textes et les schémas techniques de ce site sont des créations originales protégées par le droit d'auteur. Toute reproduction, même partielle, est soumise à autorisation.">© 2026 Emerick Wbg. Tous droits réservés. Les textes et les schémas techniques de ce site sont des créations originales protégées par le droit d'auteur. Toute reproduction, même partielle, est soumise à autorisation.</p>
       </div>
     </div>
   </footer>
@@ -2633,7 +2787,7 @@ const MODELS = [
       diff:["Carénage intégral sur la base de la GSX-8S","Demi-guidons montés au-dessus du té : position moins engagée","Fourche Showa Separate Function à la place de la KYB","Shifter bidirectionnel et écran TFT de série"] },
   ]},
 
-{ id:'ducati-multistrada-v2', brand:'ducati', nom:'Multistrada V2 S', cat:'trail', silhouette:'trail', photo:'',
+{ id:'ducati-multistrada-v2', brand:'ducati', nom:'Multistrada V2', cat:'trail', silhouette:'trail', photo:'',
   accroche:"La Multistrada allégée de 18 kg par le passage à un twin parallèle.",
   recit:"La V2 occupe le bas de la gamme Multistrada. En 2025, elle abandonne le V-twin Testastretta pour le nouveau twin parallèle 890 cm³, à distribution par ressorts. Elle y gagne 18 kg de moins et des contrôles de soupapes espacés de 30 000 km.",
   histoire:[
@@ -2805,6 +2959,688 @@ const GLOSSAIRE = [
   { t:'Norme Euro', d:"La réglementation antipollution européenne. Chaque durcissement, Euro 4 puis Euro 5, a coûté quelques chevaux à beaucoup de modèles et fait disparaître certains autres." },
 ]},
 ];
+
+/* ============================================================
+   Traduction anglaise des valeurs techniques.
+   ============================================================ */
+const TRAD_SPECS = {"Bicylindre parallèle, 8 soupapes, refroidissement liquide, calage 270°": "Parallel twin, 8 valves, liquid cooling, 270° crank","Acier, type diamant": "Steel diamond frame","Fourche télescopique 41 mm, non réglable": "Telescopic fork 41 mm, non-adjustable","Monoamortisseur, précharge et détente réglables": "Monoshock, adjustable preload and rebound","2 × 282 mm av. / 245 mm ar.": "2 x 282 mm front / 245 mm rear","120/70-17 · 180/55-17": "120/70-17 · 180/55-17","Aucune assistance électronique": "No electronic rider aids","En option": "Optional","Bicylindre parallèle, 8 soupapes, liquide, calage 270°": "Parallel twin, 8 valves, liquid-cooled, 270° crank","Fourche télescopique 41 mm, tarage revu": "Telescopic fork 41 mm, revised damping","ABS de série": "ABS standard","De série": "Standard","Fourche 41 mm réglable en détente": "Fork 41 mm rebound-adjustable","2 × 298 mm à étriers radiaux av. / 245 mm ar.": "2 x 298 mm with radial calipers front / 245 mm rear","ABS, embrayage assisté": "ABS, assist and slipper clutch","Ride-by-wire, 3 modes, contrôle de traction, écran TFT 5 pouces connecté": "Ride-by-wire, 3 modes, traction control, 5-inch TFT screen with connectivity","Trois-cylindres en ligne, 12 soupapes, liquide, vilebrequin à 120°": "Inline triple, 12 valves, liquid-cooled, 120° crankshaft","Aluminium moulé sous pression": "Die-cast aluminium","Fourche inversée 41 mm réglable": "Upside-down fork 41 mm adjustable","Monoamortisseur, précharge et détente": "Monoshock, preload and rebound","2 × 298 mm av. / 245 mm ar.": "2 x 298 mm front / 245 mm rear","Trois cartographies D-MODE": "Trois maps D-MODE","Trois-cylindres en ligne, 12 soupapes, liquide": "Inline triple, 12 valves, liquid-cooled","Fourche inversée 41 mm entièrement réglable": "Upside-down fork 41 mm fully adjustable","Contrôle de traction, shifter up, D-MODE": "Traction control, quickshifter, D-MODE","Aluminium, nouveau bras oscillant": "Aluminium, nouveau swingarm","Centrale inertielle 6 axes, ABS en virage, TC/SCS/LIF, 4 modes": "6-axis IMU, Cornering ABS, TC/SCS/LIF, 4 modes","ABS en virage": "Cornering ABS","Aluminium, réservoir redessiné": "Aluminium, réservoir redessiné","Fourche KYB 41 mm entièrement réglable": "Fork KYB 41 mm fully adjustable","Monoamortisseur KYB, précharge et détente": "Monoshock KYB, preload and rebound","2 × 298 mm, maître-cylindre Brembo av. / 245 mm ar.": "2 x 298 mm, master cylinder Brembo front / 245 mm rear","IMU 6 axes, 4 modes + 2 personnalisables, régulateur de vitesse, shifter up & down": "6-axis IMU, 4 modes + 2 customisable, cruise control, up and down quickshifter","Double berceau tubulaire acier": "Tubular steel double cradle","Fourche inversée 43 mm, 210 mm de débattement": "Upside-down fork 43 mm, 210 mm of travel","Monoamortisseur, 200 mm de débattement": "Monoshock, 200 mm of travel","90/90-21 · 150/70-18": "90/90-21 · 150/70-18","ABS déconnectable, écran LCD vertical": "ABS switchable, portrait LCD screen","Déconnectable": "Switchable","Fourche inversée 43 mm entièrement réglable": "Upside-down fork 43 mm fully adjustable","Écran TFT 5 pouces, ABS sur trois modes dont arrière seul coupé": "5-inch TFT screen, three-mode ABS including rear-only off","Trois modes": "Three modes","Quatre-cylindres en ligne crossplane, 16 soupapes, liquide": "Crossplane inline four, 16 valves, liquid-cooled","Deltabox aluminium": "Aluminium Deltabox","Fourche KYB 43 mm entièrement réglable": "Fork KYB 43 mm fully adjustable","Monoamortisseur KYB entièrement réglable": "Monoshock KYB fully adjustable","2 × 320 mm à étriers radiaux av. / 220 mm ar.": "2 x 320 mm with radial calipers front / 220 mm rear","120/70-17 · 190/55-17": "120/70-17 · 190/55-17","IMU 6 axes, contrôle de glisse SCS, anti-wheeling LIF, launch control": "6-axis IMU, slide control SCS, wheelie control LIF, launch control","2 × 320 mm, étriers radiaux Brembo av. / 220 mm ar.": "2 x 320 mm, radial calipers Brembo front / 220 mm rear","Accélérateur électronique APSG, freinage moteur réglable, IMU 6 axes": "Accélérateur électronique APSG, freinage moteur adjustable, 6-axis IMU","Aluminium moulé": "Cast aluminium","Fourche KYB semi-active 41 mm": "Fork KYB semi-active 41 mm","Monoamortisseur KYB semi-active, précharge électronique": "Monoshock KYB semi-active, electronic preload","IMU 6 axes, régulateur, shifter, deux écrans TFT 3,5 pouces": "6-axis IMU, cruise control, quickshifter, deux displays TFT 3,5 pouces","810 / 825 mm réglable": "810 / 825 mm adjustable","Étriers Brembo, freinage couplé, 2 × 298 mm av. / 245 mm ar.": "Étriers Brembo, linked braking, 2 x 298 mm front / 245 mm rear","Radar avant, régulateur adaptatif, freinage couplé unifié, écran TFT 7 pouces": "Front radar, adaptive cruise control, linked braking unifié, 7-inch TFT screen","Fourche télescopique 41 mm": "Telescopic fork 41 mm","Monoamortisseur, précharge réglable": "Monoshock, adjustable preload","ABS": "ABS","Fourche 41 mm": "Fork 41 mm","ABS, éclairage LED": "ABS, LED lighting","Bicylindre parallèle, 8 soupapes, liquide": "Parallel twin, 8 valves, liquid-cooled","298 mm av. / 220 mm ar.": "298 mm front / 220 mm rear","110/70-17 · 140/70-17": "110/70-17 · 140/70-17","Fourche inversée KYB 37 mm": "Upside-down fork KYB 37 mm","Monoamortisseur Pro-Link": "Monoshock Pro-Link","320 mm av. / 240 mm ar.": "320 mm front / 240 mm rear","120/70-17 · 160/60-17": "120/70-17 · 160/60-17","Fourche inversée Showa SFF-BP 41 mm": "Upside-down fork Showa SFF-BP 41 mm","2 × 296 mm av. / 240 mm ar.": "2 x 296 mm front / 240 mm rear","ABS, embrayage anti-dribble": "ABS, slipper clutch","Écran TFT 5 pouces, connectivité Honda RoadSync": "5-inch TFT screen, connectivity Honda RoadSync","Quatre-cylindres en ligne, 16 soupapes, liquide": "Inline four, 16 valves, liquid-cooled","2 × 310 mm à étriers radiaux av. / 240 mm ar.": "2 x 310 mm with radial calipers front / 240 mm rear","Contrôle de traction HSTC, ABS": "Traction control HSTC, ABS","Fourche Showa SFF-BP 41 mm": "Fork Showa SFF-BP 41 mm","HSTC, embrayage assisté": "HSTC, assist and slipper clutch","Honda E-Clutch, écran TFT 5 pouces, RoadSync": "Honda E-Clutch, 5-inch TFT screen, RoadSync","Double berceau semi-tubulaire acier": "Steel semi-tubular double cradle","Fourche inversée Showa 45 mm, 230 mm": "Upside-down fork Showa 45 mm, 230 mm","Pro-Link, 220 mm": "Pro-Link, 220 mm","2 × 310 mm av. / 256 mm ar.": "2 x 310 mm front / 256 mm rear","6 ou DCT": "6-speed or DCT","Contrôle de traction HSTC sur 7 niveaux, ABS arrière déconnectable": "Traction control HSTC on 7 levels, rear ABS switchable","Arrière déconnectable": "Rear switchable","850 / 870 mm réglable": "850 / 870 mm adjustable","2 × 310 mm à étriers radiaux av. / 256 mm ar.": "2 x 310 mm with radial calipers front / 256 mm rear","IMU 6 axes, ABS en virage, écran tactile 6,5 pouces, 6 modes": "6-axis IMU, Cornering ABS, 6.5-inch touchscreen, 6 modes","Fourche Showa 45 mm retarée": "Fork Showa 45 mm revalved","Pro-Link, précharge revue": "Pro-Link, précharge revue","IMU 6 axes, écran tactile 6,5 pouces, gestion de couple revue": "6-axis IMU, 6.5-inch touchscreen, revised torque control","Aluminium à double poutre": "Twin-spar aluminium","Fourche Öhlins NPX électronique 43 mm": "Fork Öhlins NPX électronique 43 mm","Öhlins TTX36 électronique": "Öhlins TTX36 électronique","2 × 330 mm, étriers Brembo Stylema R av. / 220 mm ar.": "2 x 330 mm, calipers Brembo Stylema R front / 220 mm rear","120/70-17 · 200/55-17": "120/70-17 · 200/55-17","IMU 6 axes, 9 niveaux de contrôle, shifter, ailerons": "6-axis IMU, 9-level rider aids, quickshifter, winglets","Aluminium, rigidité revue": "Aluminium, revised stiffness","Nouveau contrôle de couple, frein moteur réglable, launch control": "New torque control, engine braking adjustable, launch control","Pro-Link": "Pro-Link","Fourche Showa SFF 41 mm": "Fork Showa SFF 41 mm","Pro-Link, précharge réglable": "Pro-Link, adjustable preload","Contrôle de traction, 3 modes, écran TFT 5 pouces": "Traction control, 3 modes, 5-inch TFT screen","Monoamortisseur Pro-Link, précharge réglable": "Monoshock Pro-Link, adjustable preload","2 × 296 mm à étriers radiaux av. / 240 mm ar.": "2 x 296 mm with radial calipers front / 240 mm rear","4 modes, contrôle de traction et frein moteur sur 3 niveaux, écran TFT 5 pouces": "4 modes, traction control and engine braking on 3 levels, 5-inch TFT screen","Fourche inversée Showa 43 mm, 200 mm": "Upside-down fork Showa 43 mm, 200 mm","Pro-Link, 190 mm": "Pro-Link, 190 mm","5 modes, contrôle de traction 5 niveaux, ABS arrière déconnectable, écran TFT 5 pouces": "5 modes, traction control 5 levels, rear ABS switchable, 5-inch TFT screen","Acier tubulaire": "Tubular steel","Deux amortisseurs": "Twin shocks","296 mm av. / 240 mm ar.": "296 mm front / 240 mm rear","130/90-16 · 150/80-16": "130/90-16 · 150/80-16","ABS en option": "ABS optional","Fourche télescopique 41 mm, débattement accru": "Telescopic fork 41 mm, débattement accru","Deux amortisseurs, précharge réglable": "Twin shocks, adjustable preload","ABS de série, embrayage assisté": "ABS standard, assist and slipper clutch","Treillis acier": "Steel trellis","Fourche inversée 41 mm, précharge et détente": "Upside-down fork 41 mm, preload and rebound","Monoamortisseur Horizontal Back-link": "Monoshock Horizontal Back-link","2 × 300 mm à étriers radiaux av. / 250 mm ar.": "2 x 300 mm with radial calipers front / 250 mm rear","Monoamortisseur Back-link, précharge et détente": "Monoshock Back-link, preload and rebound","Contrôle de traction KTRC 3 niveaux, 4 modes, écran TFT couleur": "Traction control KTRC 3 levels, 4 modes, colour TFT screen","Monoamortisseur Back-link": "Monoshock Back-link","KTRC, 4 modes, shifter up & down, écran TFT 4,3 pouces": "KTRC, 4 modes, up and down quickshifter, 4.3-inch TFT screen","2 × 300 mm, étriers radiaux Tokico av. / 250 mm ar.": "2 x 300 mm, radial calipers Tokico front / 250 mm rear","Contrôle de traction 2 niveaux, ABS, compteurs à aiguilles": "Traction control 2 levels, ABS, analogue dials","Monoamortisseur, précharge à molette": "Monoshock, hand-adjustable preload","2 × 300 mm av. / 250 mm ar.": "2 x 300 mm front / 250 mm rear","Contrôle de traction KTRC, écran TFT 4,3 pouces, éclairage LED": "Traction control KTRC, 4.3-inch TFT screen, LED lighting","Fourche Showa BFF 43 mm": "Fork Showa BFF 43 mm","Amortisseur Showa BFRC": "Shock Showa BFRC","2 × 330 mm, étriers Brembo M50 av. / 220 mm ar.": "2 x 330 mm, calipers Brembo M50 front / 220 mm rear","IMU 5 axes, contrôle de traction S-KTRC, launch control": "5-axis IMU, traction control S-KTRC, launch control","ABS Bosch": "ABS Bosch","Amortisseur Showa BFRC lite": "Shock Showa BFRC lite","IMU 6 axes, ABS en virage, régulateur, écran TFT 4,3 pouces": "6-axis IMU, Cornering ABS, cruise control, 4.3-inch TFT screen","310 mm à étrier radial av. / 220 mm ar.": "310 mm with radial caliper front / 220 mm rear","110/70-17 · 150/60-17": "110/70-17 · 150/60-17","ABS, écran LCD ou TFT selon finition": "ABS, LCD display or TFT depending on trim","Monoamortisseur Back-link, précharge réglable": "Monoshock Back-link, adjustable preload","2 × 300 mm av. / 220 mm ar.": "2 x 300 mm front / 220 mm rear","Écran TFT 4,3 pouces, contrôle de traction depuis 2023": "Écran TFT 4,3 pouces, traction control since 2023","V-twin à 90°, 8 soupapes, liquide": "90° V-twin, 8 valves, liquid-cooled","2 × 290 mm av. / 240 mm ar.": "2 x 290 mm front / 240 mm rear","Low RPM Assist, démarrage une pression": "Low RPM Assist, one-touch starting","Low RPM Assist, contrôle de traction sur la version X": "Low RPM Assist, traction control on the X version","Quatre-cylindres en ligne, 16 soupapes, distribution variable SR-VVT, liquide": "Inline four, 16 valves, SR-VVT variable valve timing, liquid-cooled","2 × 320 mm, étriers Brembo T-drive av. / 220 mm ar.": "2 x 320 mm, calipers Brembo T-drive front / 220 mm rear","IMU 6 axes, 10 niveaux de traction, launch control, shifter bidirectionnel": "6-axis IMU, 10-level traction control, launch control, up and down quickshifter","Fourche télescopique 43 mm, précharge réglable": "Telescopic fork 43 mm, adjustable preload","2 × 310 mm av. / 260 mm ar.": "2 x 310 mm front / 260 mm rear","110/80-19 · 150/70-17": "110/80-19 · 150/70-17","Contrôle de traction 2 niveaux, Low RPM Assist": "Traction control 2 levels, Low RPM Assist","Contrôle de traction, éclairage LED": "Traction control, LED lighting","Fourche inversée KYB 43 mm": "Upside-down fork KYB 43 mm","2 × 310 mm, étriers Brembo av. / 240 mm ar.": "2 x 310 mm, calipers Brembo front / 240 mm rear","120/70-17 · 190/50-17": "120/70-17 · 190/50-17","Contrôle de traction 3 niveaux": "Traction control 3 levels","Fourche inversée KYB 43 mm entièrement réglable": "Upside-down fork KYB 43 mm fully adjustable","Ride-by-wire, 3 modes, shifter bidirectionnel, Low RPM Assist": "Ride-by-wire, 3 modes, up and down quickshifter, Low RPM Assist","Fourche inversée Showa 43 mm, 220 mm": "Upside-down fork Showa 43 mm, 220 mm","Monoamortisseur, 220 mm": "Monoshock, 220 mm","90/90-21 · 150/70-17": "90/90-21 · 150/70-17","3 modes, traction 3 niveaux + off, ABS arrière déconnectable, écran TFT 5 pouces": "3 modes, traction 3 levels + off, rear ABS switchable, 5-inch TFT screen","Boxer bicylindre, 8 soupapes, distribution variable ShiftCam, liquide-air": "Flat-twin boxer, 8 valves, ShiftCam variable valve timing, liquid and air-cooled","Treillis acier, moteur porteur": "Steel trellis, stressed engine","Telelever": "Telelever","Paralever, ESA en option": "Paralever, ESA optional","2 × 305 mm av. / 276 mm ar.": "2 x 305 mm front / 276 mm rear","120/70-19 · 170/60-17": "120/70-19 · 170/60-17","Modes Rain/Road, ABS Pro, DTC, écran TFT 6,5 pouces": "Modes Rain/Road, ABS Pro, DTC, 6.5-inch TFT screen","ABS Pro en virage": "Cornering ABS Pro","850 / 870 mm": "850 / 870 mm","Boxer bicylindre, 8 soupapes, ShiftCam, liquide-air": "Flat-twin boxer, 8 valves, ShiftCam, liquid and air-cooled","Coque en tôle d'acier emboutie": "Pressed sheet-steel shell","EVO Telelever": "EVO Telelever","EVO Paralever, DSA semi-actif": "EVO Paralever, DSA semi-active","2 × 310 mm av. / 285 mm ar.": "2 x 310 mm front / 285 mm rear","DSA adaptatif, régulateur adaptatif au radar en option, écran TFT 6,5 pouces": "DSA adaptatif, radar adaptive cruise control optional, 6.5-inch TFT screen","850 mm, options 820 à 870 mm": "850 mm, 820 to 870 mm options","Quatre-cylindres en ligne, 16 soupapes, ShiftCam, liquide": "Inline four, 16 valves, ShiftCam, liquid-cooled","Aluminium Flex Frame": "Aluminium Flex Frame","Fourche inversée 45 mm, DDC en option": "Upside-down fork 45 mm, DDC optional","Monoamortisseur Full Floater": "Monoshock Full Floater","IMU 6 axes, DTC, Slide Control, shifter Pro, 4 modes + Pro": "6-axis IMU, DTC, Slide Control, Pro quickshifter, 4 modes + Pro","ABS Pro": "ABS Pro","Aluminium Flex Frame, géométrie revue": "Aluminium Flex Frame, revised geometry","Monoamortisseur Full Floater, bras oscillant allongé": "Monoshock Full Floater, swingarm allongé","2 × 320 mm, étriers Nissin av. / 220 mm ar.": "2 x 320 mm, calipers Nissin front / 220 mm rear","Slide Control, Brake Slide Assist, régulateur, DTC": "Slide Control, Brake Slide Assist, cruise control, DTC","Acier, coque porteuse": "Load-bearing steel shell","Fourche inversée 43 mm": "Upside-down fork 43 mm","2 × 320 mm à étriers radiaux av. / 265 mm ar.": "2 x 320 mm with radial calipers front / 265 mm rear","Modes Rain/Road, ASC, écran TFT 6,5 pouces en option": "Modes Rain/Road, ASC, 6.5-inch TFT screen optional","Boxer bicylindre, 8 soupapes, air-huile": "Flat-twin boxer, 8 valves, air/oil-cooled","Acier tubulaire modulaire": "Tubular steel modulaire","Fourche inversée 46 mm": "Upside-down fork 46 mm","Paralever, précharge et détente": "Paralever, preload and rebound","ASC et ABS selon les années": "ASC and ABS depending on the year","Acier tubulaire, nouveau dessin": "Tubular steel, new design","Fourche inversée 45 mm entièrement réglable": "Upside-down fork 45 mm fully adjustable","Paralever": "Paralever","2 × 310 mm à étriers radiaux av. / 265 mm ar.": "2 x 310 mm with radial calipers front / 265 mm rear","3 modes, DTC, ABS Pro, régulateur en option": "3 modes, DTC, ABS Pro, cruise control optional","Fourche inversée 43 mm, 204 mm": "Upside-down fork 43 mm, 204 mm","Monoamortisseur, 219 mm": "Monoshock, 219 mm","2 × 305 mm av. / 265 mm ar.": "2 x 305 mm front / 265 mm rear","Modes Rain/Road, ASC, options Pro": "Modes Rain/Road, ASC, options Pro","Fourche inversée 43 mm, 230 mm": "Upside-down fork 43 mm, 230 mm","Monoamortisseur, 215 mm": "Monoshock, 215 mm","4 modes, ABS Pro, DTC, écran TFT 6,5 pouces": "4 modes, ABS Pro, DTC, 6.5-inch TFT screen","V-twin Testastretta 11°, 8 soupapes, liquide": "Testastretta 11° V-twin, 8 valves, liquid-cooled","Treillis acier sur moteur porteur": "Steel trellis on a stressed engine","2 × 320 mm, étriers Brembo M4-32 av. / 245 mm ar.": "2 x 320 mm, calipers Brembo M4-32 front / 245 mm rear","3 modes, contrôle de traction 8 niveaux, écran TFT": "3 modes, traction control 8 levels, TFT screen","Monocoque aluminium": "Aluminium monocoque","IMU 6 axes, ABS en virage, wheelie control, launch control, 3 modes": "6-axis IMU, Cornering ABS, wheelie control, launch control, 3 modes","820 mm, 775 mm en option": "820 mm, 775 mm optional","V4 à 90° Desmosedici Stradale, 16 soupapes desmodromiques, liquide": "90° Desmosedici Stradale V4, 16 desmodromic valves, liquid-cooled","Monocoque aluminium Front Frame": "Aluminium monocoque Front Frame","Fourche Öhlins NIX-30 électronique": "Fork Öhlins NIX-30 électronique","2 × 330 mm, étriers Brembo Stylema av. / 245 mm ar.": "2 x 330 mm, calipers Brembo Stylema front / 245 mm rear","120/70-17 · 200/60-17": "120/70-17 · 200/60-17","IMU 6 axes, EVO2 traction, slide control, Öhlins Smart EC 2.0": "6-axis IMU, EVO2 traction, slide control, Öhlins Smart EC 2.0","ABS en virage EVO": "Cornering ABS EVO","Front Frame allégé, rigidité latérale réduite de 40 %": "Front Frame lightened, lateral stiffness reduced by 40%","Fourche Öhlins NPX 25/30 électronique": "Fork Öhlins NPX 25/30 électronique","Öhlins TTX36 électronique, double biellette": "Öhlins TTX36 électronique, double biellette","2 × 330 mm, étriers Brembo Hypure av. / 245 mm ar.": "2 x 330 mm, calipers Brembo Hypure front / 245 mm rear","Race eCBS, DTC EVO 5, Ducati Vehicle Observer, 4 modes": "Race eCBS, DTC EVO 5, Ducati Vehicle Observer, 4 modes","Race eCBS en virage": "Cornering Race eCBS","V4 à 90° Granturismo, 16 soupapes à ressorts, liquide": "90° Granturismo V4, 16 valves with coil springs, liquid-cooled","Fourche Skyhook 50 mm semi-active": "Fork Skyhook 50 mm semi-active","Monoamortisseur Skyhook semi-actif": "Monoshock Skyhook semi-active","2 × 330 mm, étriers Brembo Stylema av. / 265 mm ar.": "2 x 330 mm, calipers Brembo Stylema front / 265 mm rear","Radar avant et arrière, régulateur adaptatif, 4 modes, Skyhook DSS": "Front and rear radar, adaptive cruise control, 4 modes, Skyhook DSS","840 / 860 mm": "840 / 860 mm","Fourche Skyhook 50 mm semi-active, abaissement automatique": "Fork Skyhook 50 mm semi-active, automatic lowering","2 × 330 mm, étriers Brembo Hypure av. / 265 mm ar.": "2 x 330 mm, calipers Brembo Hypure front / 265 mm rear","Radar, abaissement automatique à l'arrêt, écran TFT 6,5 pouces": "Radar, automatic lowering at a standstill, 6.5-inch TFT screen","830 / 850 mm": "830 / 850 mm","V-twin Desmodue, 4 soupapes, air-huile": "Desmodue V-twin, 4 valves, air/oil-cooled","Fourche inversée Kayaba 41 mm": "Upside-down fork Kayaba 41 mm","Monoamortisseur Kayaba, précharge réglable": "Monoshock Kayaba, adjustable preload","330 mm, étrier radial Brembo av. / 245 mm ar.": "330 mm, radial caliper Brembo front / 245 mm rear","110/80-18 · 180/55-17": "110/80-18 · 180/55-17","Treillis acier allégé": "Steel trellis lightened","2 modes, contrôle de traction, embrayage anti-dribble, écran TFT 4,3 pouces": "2 modes, traction control, slipper clutch, 4.3-inch TFT screen","Monocylindre Superquadro Mono, 4 soupapes desmodromiques, liquide": "Superquadro Mono single, 4 desmodromic valves, liquid-cooled","Fourche inversée Marzocchi 45 mm": "Upside-down fork Marzocchi 45 mm","Monoamortisseur Sachs": "Monoshock Sachs","330 mm, étrier Brembo M4-32 av. / 245 mm ar.": "330 mm, caliper Brembo M4-32 front / 245 mm rear","IMU 6 axes, Slide by Brake, wheelie control, 3 modes": "6-axis IMU, Slide by Brake, wheelie control, 3 modes","151 kg à sec": "151 kg dry","Monocylindre, 4 soupapes, liquide": "Single-cylinder, 4 valves, liquid-cooled","Fourche inversée WP APEX 43 mm": "Upside-down fork WP APEX 43 mm","Monoamortisseur WP, précharge réglable": "Monoshock WP, adjustable preload","320 mm, étrier radial ByBre av. / 230 mm ar.": "320 mm, radial caliper ByBre front / 230 mm rear","ABS déconnectable à l'arrière, écran TFT": "ABS switchable at the rear, TFT screen","—": "—","Treillis acier, sous-cadre aluminium moulé": "Steel trellis, cast aluminium subframe","Fourche inversée WP APEX 43 mm, réglable": "Upside-down fork WP APEX 43 mm, adjustable","Monoamortisseur WP APEX, 5 positions de précharge": "Monoshock WP APEX, 5 preload settings","320 mm, étrier radial ByBre av. / 240 mm ar.": "320 mm, radial caliper ByBre front / 240 mm rear","Contrôle de traction sensible à l'angle, 3 modes, shifter en option": "Traction control lean-sensitive, 3 modes, quickshifter optional","Supermoto ABS": "Supermoto ABS","Bicylindre parallèle LC8c, 8 soupapes, liquide": "LC8c parallel twin, 8 valves, liquid-cooled","Treillis chrome-molybdène": "Chromoly trellis","Fourche WP APEX 43 mm entièrement réglable": "Fork WP APEX 43 mm fully adjustable","Monoamortisseur WP APEX entièrement réglable": "Monoshock WP APEX fully adjustable","2 × 320 mm, étriers Brembo Stylema av. / 240 mm ar.": "2 x 320 mm, calipers Brembo Stylema front / 240 mm rear","IMU 6 axes, MTC sensible à l'angle, MSR, shifter en option": "6-axis IMU, MTC lean-sensitive, MSR, quickshifter optional","Supermoto ABS en virage": "Supermoto Cornering ABS","166 kg à sec": "166 kg dry","Fourche WP APEX 43 mm, 5 clics": "Fork WP APEX 43 mm, 5 clics","Monoamortisseur WP APEX": "Monoshock WP APEX","2 × 300 mm, étriers radiaux av. / 240 mm ar.": "2 x 300 mm, radial calipers front / 240 mm rear","IMU 6 axes, 4 modes, écran TFT 5 pouces, régulateur en option": "6-axis IMU, 4 modes, 5-inch TFT screen, cruise control optional","179 kg à sec": "179 kg dry","V-twin LC8 à 75°, 8 soupapes, liquide": "75° LC8 V-twin, 8 valves, liquid-cooled","Fourche WP APEX 48 mm": "Fork WP APEX 48 mm","IMU 6 axes, MTC, anti-wheeling, launch control": "6-axis IMU, MTC, wheelie control, launch control","189 kg à sec": "189 kg dry","V-twin LC8 à 75°, 8 soupapes, calage variable CAMSHIFT, liquide": "75° LC8 V-twin, 8 valves, CAMSHIFT variable valve timing, liquid-cooled","Fourche WP APEX semi-active 48 mm": "Fork WP APEX semi-active 48 mm","Monoamortisseur WP APEX semi-actif": "Monoshock WP APEX semi-active","CAMSHIFT, 5 modes, suspension semi-active, régulateur": "CAMSHIFT, 5 modes, semi-active suspension, cruise control","200 kg tous pleins": "200 kg wet","Fourche WP XPLOR 48 mm, 240 mm": "Fork WP XPLOR 48 mm, 240 mm","Monoamortisseur WP XPLOR, 240 mm": "Monoshock WP XPLOR, 240 mm","2 × 320 mm, étriers radiaux av. / 260 mm ar.": "2 x 320 mm, radial calipers front / 260 mm rear","Mode Offroad et Rally, ABS déconnectable, MTC sensible à l'angle": "Mode Offroad and Rally, ABS switchable, MTC lean-sensitive","Offroad ABS": "Offroad ABS","196 kg tous pleins": "196 kg wet","Treillis chrome-molybdène, rigidité revue": "Chromoly trellis, revised stiffness","Fourche WP XPLOR 48 mm entièrement réglable": "Fork WP XPLOR 48 mm fully adjustable","Monoamortisseur WP XPLOR, précharge à molette": "Monoshock WP XPLOR, hand-adjustable preload","Écran TFT 5 pouces, Rally Pack en option, régulateur": "5-inch TFT screen, Rally Pack optional, cruise control","Fourche Showa BPF 41 mm entièrement réglable": "Fork Showa BPF 41 mm fully adjustable","Amortisseur Öhlins STX40": "Shock Öhlins STX40","2 × 310 mm, étriers Brembo M50 av. / 220 mm ar.": "2 x 310 mm, calipers Brembo M50 front / 220 mm rear","5 modes, contrôle de traction, shifter, écran TFT": "5 modes, traction control, quickshifter, TFT screen","2 × 310 mm, étriers Brembo Stylema av. / 220 mm ar.": "2 x 310 mm, calipers Brembo Stylema front / 220 mm rear","IMU 6 axes, 5 modes dont Track, shifter bidirectionnel, écran TFT 5 pouces": "6-axis IMU, 5 modes dont Track, up and down quickshifter, 5-inch TFT screen","Berceau tubulaire acier": "Tubular steel cradle","Fourche KYB 41 mm": "Fork KYB 41 mm","Deux amortisseurs KYB, précharge réglable": "Twin shocks KYB, adjustable preload","2 × 310 mm, étriers Nissin av. / 255 mm ar.": "2 x 310 mm, calipers Nissin front / 255 mm rear","100/90-18 · 150/70-17": "100/90-18 · 150/70-17","Ride-by-wire, 2 modes, contrôle de traction": "Ride-by-wire, 2 modes, traction control","Fourche cartouche 41 mm": "Cartridge fork 41 mm","2 × 310 mm, étriers Brembo av. / 255 mm ar.": "2 x 310 mm, calipers Brembo front / 255 mm rear","2 modes, contrôle de traction déconnectable, éclairage LED": "2 modes, traction control switchable, LED lighting","Trois-cylindres en ligne, vilebrequin T-plane, liquide": "Inline triple, T-plane crankshaft, liquid-cooled","Treillis acier modulaire": "Steel trellis modulaire","Fourche Marzocchi 45 mm": "Fork Marzocchi 45 mm","Marzocchi, précharge électronique": "Marzocchi, electronic preload","2 × 320 mm, étriers Brembo Stylema av. / 255 mm ar.": "2 x 320 mm, calipers Brembo Stylema front / 255 mm rear","100/90-19 · 150/70-17": "100/90-19 · 150/70-17","6 modes, IMU, écran TFT 7 pouces, régulateur": "6 modes, IMU, 7-inch TFT screen, cruise control","192 kg à sec": "192 kg dry","820 / 840 mm": "820 / 840 mm","Fourche Marzocchi 45 mm réglable": "Fork Marzocchi 45 mm adjustable","5 modes, shifter bidirectionnel, régulateur, poignées chauffantes": "5 modes, up and down quickshifter, cruise control, heated grips","198 kg à sec": "198 kg dry","Périmétrique tubulaire acier": "Tubular steel perimeter frame","Fourche inversée Showa SFF 41 mm": "Upside-down fork Showa SFF 41 mm","Monoamortisseur Showa, précharge réglable": "Monoshock Showa, adjustable preload","2 modes, contrôle de traction, écran TFT/LCD combiné": "2 modes, traction control, TFT screen/LCD combiné","Aluminium, bras oscillant monobras": "Aluminium, single-sided swingarm","Fourche Öhlins NIX30 43 mm": "Fork Öhlins NIX30 43 mm","Amortisseur Öhlins TTX36": "Shock Öhlins TTX36","2 × 320 mm, étriers Brembo Stylema av. / 220 mm ar.": "2 x 320 mm, calipers Brembo Stylema front / 220 mm rear","IMU 6 axes, 5 modes, shifter bidirectionnel, écran TFT 5 pouces": "6-axis IMU, 5 modes, up and down quickshifter, 5-inch TFT screen","Double poutre aluminium, moteur porteur": "Twin-spar aluminium, stressed engine","Fourche Kayaba 41 mm réglable": "Fork Kayaba 41 mm adjustable","Monoamortisseur Sachs, précharge et détente": "Monoshock Sachs, preload and rebound","2 × 320 mm, étriers Brembo av. / 220 mm ar.": "2 x 320 mm, calipers Brembo front / 220 mm rear","IMU 6 axes, APRC complet, 5 modes, shifter en option": "6-axis IMU, APRC complet, 5 modes, quickshifter optional","V4 à 65°, 16 soupapes, liquide": "65° V4, 16 valves, liquid-cooled","Double poutre aluminium": "Twin-spar aluminium","Fourche Öhlins NIX semi-active 43 mm": "Fork Öhlins NIX semi-active 43 mm","Öhlins TTX semi-actif": "Öhlins TTX semi-active","2 × 330 mm, étriers Brembo Stylema av. / 220 mm ar.": "2 x 330 mm, calipers Brembo Stylema front / 220 mm rear","IMU 6 axes, APRC, 6 modes, régulateur, écran TFT 5 pouces": "6-axis IMU, APRC, 6 modes, cruise control, 5-inch TFT screen","Double poutre aluminium à géométrie réglable": "Twin-spar aluminium with adjustable geometry","Fourche Öhlins NPX semi-active 43 mm": "Fork Öhlins NPX semi-active 43 mm","APRC complet, 6 modes, launch control, écran TFT 5 pouces": "APRC complet, 6 modes, launch control, 5-inch TFT screen","V-twin Revolution Max 1250T à 60°, 8 soupapes, distribution variable, liquide": "60° Revolution Max V-twin 1250T, 8 valves, variable valve timing, liquid-cooled","Moteur porteur, éléments boulonnés": "Moteur porteur, bolt-on components","Fourche inversée Showa 43 mm": "Upside-down fork Showa 43 mm","320 mm, étrier radial Brembo av. / 260 mm ar.": "320 mm, radial caliper Brembo front / 260 mm rear","160/70-17 · 180/70-16": "160/70-17 · 180/70-16","IMU 6 axes, ABS en virage, 3 modes + 2 personnalisables": "6-axis IMU, Cornering ABS, 3 modes + 2 customisable","V-twin Revolution Max 1250 à 60°, 8 soupapes, distribution variable, liquide": "60° Revolution Max V-twin 1250, 8 valves, variable valve timing, liquid-cooled","Moteur porteur": "Moteur porteur","Fourche Showa semi-active 47 mm, 191 mm": "Fork Showa semi-active 47 mm, 191 mm","Showa semi-actif, 191 mm": "Showa semi-active, 191 mm","2 × 320 mm, étriers Brembo av. / 280 mm ar.": "2 x 320 mm, calipers Brembo front / 280 mm rear","Adaptive Ride Height, 5 modes, IMU 6 axes, écran tactile 6,8 pouces": "Adaptive Ride Height, 5 modes, 6-axis IMU, 6.8-inch touchscreen","846 / 871 mm, ARH abaisse de 25 à 50 mm": "846 / 871 mm, ARH lowers by 25 to 50 mm","V-twin Revolution Max 975T à 60°, 8 soupapes, liquide": "60° Revolution Max V-twin 975T, 8 valves, liquid-cooled","Fourche inversée Showa 41 mm": "Upside-down fork Showa 41 mm","Deux amortisseurs Showa, précharge réglable": "Twin shocks Showa, adjustable preload","320 mm, étrier radial av. / 260 mm ar.": "320 mm, radial caliper front / 260 mm rear","100/90-19 · 150/80-16": "100/90-19 · 150/80-16","3 modes, contrôle de traction, ABS en virage": "3 modes, traction control, Cornering ABS","V-twin Milwaukee-Eight 114 à 45°, 8 soupapes, air-huile": "45° Milwaukee-Eight V-twin 114, 8 valves, air/oil-cooled","Softail, monoamortisseur caché": "Softail, hidden monoshock","Fourche Showa Dual Bending Valve 49 mm": "Fork Showa Dual Bending Valve 49 mm","Monoamortisseur caché, précharge réglable": "Monoshock caché, adjustable preload","300 mm av. / 292 mm ar.": "300 mm front / 292 mm rear","160/60-18 · 240/40-18": "160/60-18 · 240/40-18","ABS, contrôle de traction sur les années récentes": "ABS, traction control on recent years","Monocylindre, 2 soupapes, air-huile": "Single-cylinder, 2 valves, air/oil-cooled","Double berceau acier": "Steel double cradle","Fourche télescopique 41 mm, 200 mm": "Telescopic fork 41 mm, 200 mm","Monoamortisseur, 180 mm": "Monoshock, 180 mm","300 mm av. / 240 mm ar.": "300 mm front / 240 mm rear","90/90-21 · 120/90-17": "90/90-21 · 120/90-17","ABS déconnectable à l'arrière": "ABS switchable at the rear","Monocylindre Sherpa, 4 soupapes, double arbre à cames, liquide": "Sherpa single, 4 valves, DOHC, liquid-cooled","Treillis acier développé avec Harris Performance": "Steel trellis developed with Harris Performance","Monoamortisseur, 200 mm": "Monoshock, 200 mm","320 mm av. / 270 mm ar.": "320 mm front / 270 mm rear","90/90-21 · 140/80-17": "90/90-21 · 140/80-17","2 modes, ABS arrière déconnectable, écran TFT circulaire avec Google Maps": "2 modes, rear ABS switchable, round TFT screen with Google Maps","825 mm, 805 mm en option": "825 mm, 805 mm optional","Bicylindre parallèle, 8 soupapes, air-huile, calage 360°": "Parallel twin, 8 valves, air/oil-cooled, 360° crank","Double berceau acier, développé avec Harris": "Steel double cradle, developed with Harris","320 mm, étrier ByBre av. / 240 mm ar.": "320 mm, caliper ByBre front / 240 mm rear","100/90-18 · 130/70-18": "100/90-18 · 130/70-18","ABS deux canaux": "ABS dual-channel","ABS, éclairage LED, prise USB": "ABS, LED lighting, USB socket","Trois-cylindres en ligne contrarotatif, 12 soupapes, liquide": "Counter-rotating inline triple, 12 valves, liquid-cooled","Treillis acier avec plaques latérales aluminium": "Steel trellis with aluminium side plates","Fourche Marzocchi 43 mm entièrement réglable": "Fork Marzocchi 43 mm fully adjustable","Amortisseur Sachs entièrement réglable": "Shock Sachs fully adjustable","IMU, 4 modes, shifter EAS 3.0, contrôle de traction 8 niveaux": "IMU, 4 modes, quickshifter EAS 3.0, traction control 8 levels","ABS en virage Continental": "Cornering ABS Continental","175 kg à sec": "175 kg dry","V-twin transversal à 90°, 4 soupapes, air-huile": "Transverse 90° V-twin, 4 valves, air/oil-cooled","Fourche télescopique 40 mm": "Telescopic fork 40 mm","320 mm, étrier Brembo av. / 260 mm ar.": "320 mm, caliper Brembo front / 260 mm rear","100/90-18 · 130/80-17": "100/90-18 · 130/80-17","ABS, contrôle de traction": "ABS, traction control","Double berceau acier, boucle arrière renforcée": "Steel double cradle, subframe reinforced","Deux amortisseurs Kayaba, précharge réglable": "Twin shocks Kayaba, adjustable preload","ABS, contrôle de traction déconnectable, éclairage LED": "ABS, traction control switchable, LED lighting","Fourche inversée 41 mm, 170 mm": "Upside-down fork 41 mm, 170 mm","Monoamortisseur, 170 mm": "Monoshock, 170 mm","2 × 320 mm, étriers Brembo av. / 260 mm ar.": "2 x 320 mm, calipers Brembo front / 260 mm rear","3 modes, contrôle de traction, ABS": "3 modes, traction control, ABS","5 modes, régulateur, écran TFT 5 pouces, connectivité": "5 modes, cruise control, 5-inch TFT screen, connectivity","Moteur électrique synchrone Z-Force 75-10, refroidi par air": "Z-Force synchronous electric motor 75-10, air-cooled","Fourche Showa 43 mm entièrement réglable": "Fork Showa 43 mm fully adjustable","Amortisseur Showa entièrement réglable": "Shock Showa fully adjustable","2 × 320 mm, étriers Brembo av. / 240 mm ar.": "2 x 320 mm, calipers Brembo front / 240 mm rear","Sans boîte, transmission directe par courroie": "No gearbox, direct belt drive","Cypher III+, 4 modes, ABS Bosch MSC, connectivité": "Cypher III+, 4 modes, ABS Bosch MSC, connectivity","Batterie 17,3 kWh": "Battery 17,3 kWh","≈ 259 km en ville, 158 km sur route": "≈ 259 km in town, 158 km on the open road","dès 0 tr/min": "from 0 rpm","Ride-by-wire YCC-T, 3 modes, contrôle de traction": "Ride-by-wire YCC-T, 3 modes, traction control","IMU 6 axes, ABS en virage, 4 modes, régulateur, écran TFT 4,2 pouces": "6-axis IMU, Cornering ABS, 4 modes, cruise control, 4.2-inch TFT screen","Contrôle de traction, 3 cartographies": "Traction control, 3 maps","Aluminium, bras oscillant allongé": "Aluminium, swingarm allongé","IMU 6 axes, ABS en virage, 4 modes, shifter bidirectionnel": "6-axis IMU, Cornering ABS, 4 modes, up and down quickshifter","Acier, type diamant, rigidité revue": "Steel diamond frame, revised stiffness","Fourche inversée KYB 41 mm entièrement réglable": "Upside-down fork KYB 41 mm fully adjustable","Embrayage anti-dribble, shifter en option": "Embrayage slipper, quickshifter optional","ABS, écran LCD, prise 12 V": "ABS, LCD display, prise 12 V","2 × 310 mm, étriers radiaux Nissin av. / 240 mm ar.": "2 x 310 mm, radial calipers Nissin front / 240 mm rear","3 modes + 2 personnalisables, contrôle de traction, écran TFT 5 pouces": "3 modes + 2 customisable, traction control, 5-inch TFT screen","Six-cylindres à plat, 24 soupapes, liquide": "Flat six, 24 valves, liquid-cooled","Double triangulation Hossack, 109 mm": "Double triangulation Hossack, 109 mm","Pro-Link, précharge électronique": "Pro-Link, electronic preload","2 × 320 mm av. / 316 mm ar., freinage couplé": "2 x 320 mm front / 316 mm rear, linked braking","130/70-18 · 200/55-16": "130/70-18 · 200/55-16","6 manuelle ou DCT 7 rapports": "6-speed manual or 7-speed DCT","4 modes, régulateur, Apple CarPlay, marche arrière électrique, airbag": "4 modes, cruise control, Apple CarPlay, electric reverse gear, airbag","330 mm, étrier radial av. / 256 mm ar.": "330 mm, radial caliper front / 256 mm rear","130/70-18 · 180/65-16": "130/70-18 · 180/65-16","3 modes + 1 personnalisable, contrôle de traction, régulateur": "3 modes + 1 customisable, traction control, cruise control","2 × 300 mm, étriers radiaux av. / 250 mm ar.": "2 x 300 mm, radial calipers front / 250 mm rear","4 modes, KTRC, régulateur, shifter, écran TFT 4,3 pouces": "4 modes, KTRC, cruise control, quickshifter, 4.3-inch TFT screen","Fourche Showa Skyhook électronique 43 mm": "Fork Showa Skyhook électronique 43 mm","Monoamortisseur Skyhook électronique": "Monoshock Skyhook électronique","2 × 310 mm, étriers radiaux av. / 250 mm ar.": "2 x 310 mm, radial calipers front / 250 mm rear","Suspensions semi-actives KECS, IMU, régulateur, shifter, poignées chauffantes": "Suspensions semi-actives KECS, IMU, cruise control, quickshifter, heated grips","Périmétrique acier": "Périmétrique acier","Monoamortisseur décalé, précharge réglable": "Monoshock décalé, adjustable preload","300 mm av. / 250 mm ar.": "300 mm front / 250 mm rear","120/70-18 · 160/60-17": "120/70-18 · 160/60-17","2 × 320 mm, étriers Brembo Stylema av. / 260 mm ar.": "2 x 320 mm, calipers Brembo Stylema front / 260 mm rear","IMU 6 axes, 10 niveaux de traction, launch control, régulateur, shifter": "6-axis IMU, 10-level traction control, launch control, cruise control, quickshifter","Fourche inversée KYB 41 mm": "Upside-down fork KYB 41 mm","3 modes, traction 3 niveaux, shifter bidirectionnel, écran TFT 5 pouces": "3 modes, traction 3 levels, up and down quickshifter, 5-inch TFT screen","Paralever, ESA dynamique": "Paralever, ESA dynamique","2 × 320 mm av. / 276 mm ar.": "2 x 320 mm front / 276 mm rear","ESA dynamique, régulateur, écran TFT 10,25 pouces": "ESA dynamique, cruise control, 10.25-inch TFT screen","805 / 825 mm": "805 / 825 mm","EVO Paralever, DSA adaptatif": "EVO Paralever, DSA adaptatif","DSA, régulateur adaptatif au radar, volets d'aération électriques, écran 10,25 pouces": "DSA, radar adaptive cruise control, volets d'aération électriques, 10.25-inch display","Boxer bicylindre, 4 soupapes, air-huile": "Flat-twin boxer, 4 valves, air/oil-cooled","Fourche télescopique 49 mm": "Telescopic fork 49 mm","Monoamortisseur central, cardan apparent": "Monoshock central, exposed shaft drive","2 × 300 mm av. / 300 mm ar.": "2 x 300 mm front / 300 mm rear","120/70-19 · 180/65-16": "120/70-19 · 180/65-16","3 modes, ASC, contrôle de frein moteur, marche arrière électrique": "3 modes, ASC, engine brake control, electric reverse gear","IMU 6 axes, 4 modes, régulateur, shifter Pro, DDC en option": "6-axis IMU, 4 modes, cruise control, Pro quickshifter, DDC optional","Front Frame aluminium": "Front Frame aluminium","IMU 6 axes, Öhlins Smart EC 2.0, wheelie et slide control": "6-axis IMU, Öhlins Smart EC 2.0, wheelie and slide control","DTC EVO 3, Power Launch, 4 modes, écran TFT 5 pouces": "DTC EVO 3, Power Launch, 4 modes, 5-inch TFT screen","Treillis acier dédié": "Steel trellis dédié","Fourche inversée KYB 46 mm, 230 mm": "Upside-down fork KYB 46 mm, 230 mm","Monoamortisseur KYB, 220 mm": "Monoshock KYB, 220 mm","2 × 320 mm, étriers Brembo av. / 265 mm ar.": "2 x 320 mm, calipers Brembo front / 265 mm rear","6 modes, IMU 6 axes, ABS déconnectable, écran TFT vertical 5 pouces": "6 modes, 6-axis IMU, ABS switchable, portrait 5-inch TFT screen","V-twin Superquadro, 8 soupapes desmodromiques, liquide": "Superquadro V-twin, 8 desmodromic valves, liquid-cooled","Fourche Showa BPF 43 mm entièrement réglable": "Fork Showa BPF 43 mm fully adjustable","Amortisseur Sachs": "Shock Sachs","120/70-17 · 180/60-17": "120/70-17 · 180/60-17","IMU 6 axes, EVO traction, shifter bidirectionnel, 3 modes": "6-axis IMU, EVO traction, up and down quickshifter, 3 modes","Bicylindre parallèle V2, 8 soupapes à ressorts, liquide": "V2 parallel twin, 8 valves with coil springs, liquid-cooled","Fourche Marzocchi 43 mm": "Fork Marzocchi 43 mm","Monoamortisseur Kayaba": "Monoshock Kayaba","2 × 320 mm, étriers Brembo M50 av. / 245 mm ar.": "2 x 320 mm, calipers Brembo M50 front / 245 mm rear","IMU 6 axes, DTC EVO, shifter, écran TFT 5 pouces": "6-axis IMU, DTC EVO, quickshifter, 5-inch TFT screen","Monoamortisseur WP semi-actif": "Monoshock WP semi-active","2 × 320 mm, étriers Brembo av. / 267 mm ar.": "2 x 320 mm, calipers Brembo front / 267 mm rear","Radar avant, régulateur adaptatif, 5 modes, suspension semi-active, écran TFT 7 pouces": "Front radar, adaptive cruise control, 5 modes, semi-active suspension, 7-inch TFT screen","Offroad ABS en virage": "Offroad Cornering ABS","220 kg à sec": "220 kg dry","849 / 869 mm réglable": "849 / 869 mm adjustable","Bicylindre parallèle LC8c, 8 soupapes, liquide, calage 285°": "LC8c parallel twin, 8 valves, liquid-cooled, 285° crank","Fourche WP APEX 43 mm": "Fork WP APEX 43 mm","Monoamortisseur WP APEX, précharge réglable": "Monoshock WP APEX, adjustable preload","IMU, MTC sensible à l'angle, MSR, 4 modes": "IMU, MTC lean-sensitive, MSR, 4 modes","169 kg à sec": "169 kg dry","IMU, MTC, 3 modes, écran TFT 5 pouces": "IMU, MTC, 3 modes, 5-inch TFT screen","Treillis acier, sous-cadre aluminium": "Steel trellis, aluminium subframe","Fourche inversée WP APEX 43 mm réglable": "Upside-down fork WP APEX 43 mm adjustable","Monoamortisseur WP APEX réglable": "Monoshock WP APEX adjustable","ABS en virage, Supermoto ABS, contrôle de traction, shifter en option": "Cornering ABS, Supermoto ABS, traction control, quickshifter optional","Trois-cylindres en ligne longitudinal, 12 soupapes, liquide": "Longitudinal inline triple, 12 valves, liquid-cooled","Aluminium, moteur porteur": "Aluminium, stressed engine","Fourche Showa 47 mm entièrement réglable": "Fork Showa 47 mm fully adjustable","Monoamortisseur Showa, précharge hydraulique": "Monoshock Showa, hydraulic preload","2 × 320 mm, étriers Brembo Stylema av. / 300 mm ar.": "2 x 320 mm, calipers Brembo Stylema front / 300 mm rear","150/80-17 · 240/50-16": "150/80-17 · 240/50-16","IMU, 4 modes, ABS en virage, régulateur, transmission par cardan": "IMU, 4 modes, Cornering ABS, cruise control, shaft drive","Fourche Showa semi-active 49 mm, 200 mm": "Fork Showa semi-active 49 mm, 200 mm","Showa semi-actif, 200 mm": "Showa semi-active, 200 mm","2 × 320 mm, étriers Brembo Stylema av. / 282 mm ar.": "2 x 320 mm, calipers Brembo Stylema front / 282 mm rear","120/70-19 · 150/70-18": "120/70-19 · 150/70-18","6 modes, IMU, régulateur, écran TFT 7 pouces, cardan": "6 modes, IMU, cruise control, 7-inch TFT screen, cardan","2 × 310 mm, étriers radiaux av. / 220 mm ar.": "2 x 310 mm, radial calipers front / 220 mm rear","3 modes, contrôle de traction, écran LCD/TFT combiné": "3 modes, traction control, LCD display/TFT combiné","Périmétrique acier hybride": "Hybrid steel perimeter frame","300 mm, étrier radial ByBre av. / 230 mm ar.": "300 mm, radial caliper ByBre front / 230 mm rear","Contrôle de traction déconnectable, embrayage assisté": "Traction control switchable, assist and slipper clutch","Fourche Kayaba 43 mm entièrement réglable, 240 mm": "Fork Kayaba 43 mm fully adjustable, 240 mm","Monoamortisseur Kayaba, 240 mm": "Monoshock Kayaba, 240 mm","2 × 300 mm, étriers Brembo av. / 260 mm ar.": "2 x 300 mm, calipers Brembo front / 260 mm rear","4 modes, APRC, ABS déconnectable, écran TFT 5 pouces": "4 modes, APRC, ABS switchable, 5-inch TFT screen","Fourche inversée 41 mm réglable en précharge": "Upside-down fork 41 mm preload-adjustable","320 mm, étrier radial ByBre av. / 220 mm ar.": "320 mm, radial caliper ByBre front / 220 mm rear","3 modes, contrôle de traction 3 niveaux, écran TFT 5 pouces": "3 modes, traction control 3 levels, 5-inch TFT screen","V-twin Milwaukee-Eight 117 à 45°, 8 soupapes, liquide-air": "45° Milwaukee-Eight V-twin 117, 8 valves, liquid and air-cooled","Fourche Showa 49 mm": "Fork Showa 49 mm","Deux amortisseurs, précharge hydraulique": "Twin shocks, hydraulic preload","130/60-19 · 180/55-18": "130/60-19 · 180/55-18","3 modes + 2 personnalisables, écran tactile 12,3 pouces, régulateur": "3 modes + 2 customisable, 12.3-inch touchscreen, cruise control","V-twin Milwaukee-Eight 117 à 45°, 8 soupapes, air-huile": "45° Milwaukee-Eight V-twin 117, 8 valves, air/oil-cooled","Monoamortisseur caché, précharge hydraulique": "Monoshock caché, hydraulic preload","2 × 300 mm av. / 292 mm ar.": "2 x 300 mm front / 292 mm rear","110/90-19 · 180/70-16": "110/90-19 · 180/70-16","ABS, contrôle de traction, modes de conduite": "ABS, traction control, riding modes","Double berceau acier, dessiné avec Harris": "Steel double cradle, designed with Harris","320 mm, étrier ByBre av. / 300 mm ar.": "320 mm, caliper ByBre front / 300 mm rear","ABS deux canaux, écran Tripper de navigation": "ABS dual-channel, display Tripper navigation","Monocylindre, 2 soupapes, air-huile, arbre d'équilibrage": "Single-cylinder, 2 valves, air/oil-cooled, balance shaft","300 mm av. / 270 mm ar.": "300 mm front / 270 mm rear","100/90-19 · 120/80-18": "100/90-19 · 120/80-18","ABS deux canaux, écran Tripper en option": "ABS dual-channel, display Tripper optional","IMU, 4 modes, shifter EAS 3.0, traction 8 niveaux, écran TFT 5,5 pouces": "IMU, 4 modes, quickshifter EAS 3.0, traction 8 levels, 5.5-inch TFT screen","173 kg à sec": "173 kg dry","V-twin transversal à 90°, 8 soupapes, liquide": "Transverse 90° V-twin, 8 valves, liquid-cooled","Acier tubulaire, moteur porteur": "Tubular steel, stressed engine","Fourche Öhlins semi-active 41 mm": "Fork Öhlins semi-active 41 mm","Monoamortisseur Öhlins semi-actif": "Monoshock Öhlins semi-active","Aérodynamique active, 5 modes, IMU, régulateur, écran TFT 5 pouces": "Aérodynamique active, 5 modes, IMU, cruise control, 5-inch TFT screen","Fourche WP APEX 43 mm réglable": "Fork WP APEX 43 mm adjustable","IMU 6 axes, 3 modes + Dynamic, shifter, écran TFT 5 pouces": "6-axis IMU, 3 modes + Dynamic, quickshifter, 5-inch TFT screen","Fourche WP APEX 43 mm, 220 mm": "Fork WP APEX 43 mm, 220 mm","Monoamortisseur WP APEX, 215 mm": "Monoshock WP APEX, 215 mm","IMU 6 axes, 4 modes, ABS déconnectable, écran TFT 5 pouces": "6-axis IMU, 4 modes, ABS switchable, 5-inch TFT screen","204 kg à sec": "204 kg dry","V-twin à 60°, 8 soupapes, liquide": "60° V-twin, 8 valves, liquid-cooled","120/70-19 · 150/80-18": "120/70-19 · 150/80-18","IMU, 3 modes, ABS en virage, écran TFT 4,3 pouces": "IMU, 3 modes, Cornering ABS, 4.3-inch TFT screen","Fourche inversée Sachs 43 mm entièrement réglable": "Upside-down fork Sachs 43 mm fully adjustable","Monoamortisseur Sachs, précharge réglable": "Monoshock Sachs, adjustable preload","IMU, 3 modes, contrôle de traction, écran TFT 4,3 pouces": "IMU, 3 modes, traction control, 4.3-inch TFT screen","Deux amortisseurs, débattement réduit": "Twin shocks, débattement réduit","298 mm av. / 298 mm ar.": "298 mm front / 298 mm rear","ABS selon finition": "ABS depending on trim","V-twin SpeedPlus à 60°, 8 soupapes, liquide": "60° SpeedPlus V-twin, 8 valves, liquid-cooled","3 modes, contrôle de traction, écran rond 4 pouces sur finitions hautes": "3 modes, traction control, 4-inch round display on higher trims","Fourche inversée KYB 41 mm réglable": "Upside-down fork KYB 41 mm adjustable","Monoamortisseur KYB, précharge à molette": "Monoshock KYB, hand-adjustable preload","2 × 320 mm, étriers J.Juan av. / 260 mm ar.": "2 x 320 mm, calipers J.Juan front / 260 mm rear","2 modes, contrôle de traction, régulateur, poignées chauffantes, écran TFT 7 pouces": "2 modes, traction control, cruise control, heated grips, 7-inch TFT screen","Bosch, arrière déconnectable": "Bosch, rear switchable","Fourche inversée 37 mm": "Upside-down fork 37 mm","320 mm, étrier radial J.Juan av. / 220 mm ar.": "320 mm, radial caliper J.Juan front / 220 mm rear","Contrôle de traction, écran TFT 5 pouces, éclairage LED": "Traction control, 5-inch TFT screen, LED lighting","Bosch deux canaux": "Bosch dual-channel","320 mm, étrier radial J.Juan av. / 260 mm ar.": "320 mm, radial caliper J.Juan front / 260 mm rear","2 modes, contrôle de traction, écran TFT rond 5 pouces": "2 modes, traction control, TFT screen rond 5 pouces","Moteur électrique synchrone Z-Force 75-10X, refroidi par air": "Z-Force synchronous electric motor 75-10X, air-cooled","Fourche Showa 43 mm entièrement réglable, 190 mm": "Fork Showa 43 mm fully adjustable, 190 mm","Amortisseur Showa entièrement réglable, 180 mm": "Shock Showa fully adjustable, 180 mm","2 × 320 mm, étriers J.Juan av. / 265 mm ar.": "2 x 320 mm, calipers J.Juan front / 265 mm rear","Cypher III+, 5 modes, régénération réglable, ABS Bosch MSC": "Cypher III+, 5 modes, régénération adjustable, ABS Bosch MSC","≈ 290 km en ville, 160 km sur route": "≈ 290 km in town, 160 km on the open road","Monocylindre, 4 soupapes, liquide, distribution variable VVA": "Single-cylinder, 4 valves, liquid-cooled, variable valve timing VVA","Deltabox acier": "Steel Deltabox","Fourche inversée 41 mm": "Upside-down fork 41 mm","292 mm av. / 220 mm ar.": "292 mm front / 220 mm rear","100/80-17 · 140/70-17": "100/80-17 · 140/70-17","Monocylindre, 4 soupapes, liquide, VVA": "Single-cylinder, 4 valves, liquid-cooled, VVA","ABS, embrayage assisté, écran LCD": "ABS, assist and slipper clutch, LCD display","Monocylindre, 2 soupapes, liquide": "Single-cylinder, 2 valves, liquid-cooled","296 mm à étrier radial av. / 220 mm ar.": "296 mm with radial caliper front / 220 mm rear","ABS Nissin": "ABS Nissin","Monocylindre, 4 soupapes, double arbre à cames, liquide": "Single-cylinder, 4 valves, DOHC, liquid-cooled","ABS, écran LCD puis TFT": "ABS, LCD display then TFT","Monoamortisseur WP APEX, 5 positions": "Monoshock WP APEX, 5 positions","Écran TFT 5 pouces, Supermoto ABS, shifter en option": "5-inch TFT screen, Supermoto ABS, quickshifter optional","Périmétrique aluminium": "Aluminium perimeter frame","300 mm à étrier radial av. / 218 mm ar.": "300 mm with radial caliper front / 218 mm rear","3 modes, contrôle de traction 3 niveaux, écran TFT": "3 modes, traction control 3 levels, TFT screen","Monocylindre, 4 soupapes, liquide, culasse inversée": "Single-cylinder, 4 valves, liquid-cooled, reversed cylinder head","300 mm à étrier radial av. / 240 mm ar.": "300 mm with radial caliper front / 240 mm rear","ABS, embrayage assisté, éclairage LED": "ABS, assist and slipper clutch, LED lighting","Fourche Marzocchi semi-active 45 mm": "Fork Marzocchi semi-active 45 mm","Monoamortisseur Sachs semi-actif": "Monoshock Sachs semi-active","2 × 320 mm, étriers Brembo M4-32 av. / 265 mm ar.": "2 x 320 mm, calipers Brembo M4-32 front / 265 mm rear","IMU 6 axes, 4 modes, suspensions Skyhook sur la S": "6-axis IMU, 4 modes, Skyhook suspension on the S","Monoamortisseur semi-actif, abaissement automatique": "Monoshock semi-active, automatic lowering","IMU 6 axes, 4 modes, abaissement automatique à l'arrêt": "6-axis IMU, 4 modes, automatic lowering at a standstill","310 mm, étrier Brembo av. / 255 mm ar.": "310 mm, caliper Brembo front / 255 mm rear","2 modes, contrôle de traction déconnectable": "2 modes, traction control switchable","Fourche Marzocchi 41 mm": "Fork Marzocchi 41 mm","2 modes, contrôle de traction, embrayage assisté": "2 modes, traction control, assist and slipper clutch","310 mm à étrier radial av. / 240 mm ar.": "310 mm with radial caliper front / 240 mm rear","130/70-18 · 150/80-16": "130/70-18 · 150/80-16","ABS, écran LCD, connectivité sur la version SE": "ABS, LCD display, connectivity on the SE version","Monocylindre LC4, 4 soupapes, liquide, deux arbres d'équilibrage": "LC4 single, 4 valves, liquid-cooled, twin balance shafts","Fourche WP XPLOR 48 mm, 215 mm": "Fork WP XPLOR 48 mm, 215 mm","320 mm, étrier radial Brembo av. / 240 mm ar.": "320 mm, radial caliper Brembo front / 240 mm rear","Supermoto ABS, MTC sensible à l'angle, 2 modes": "Supermoto ABS, MTC lean-sensitive, 2 modes","147 kg à sec": "147 kg dry","Fourche Sachs semi-active 46 mm, 170 mm": "Fork Sachs semi-active 46 mm, 170 mm","Monoamortisseur Sachs semi-actif, 170 mm": "Monoshock Sachs semi-active, 170 mm","Radar avant PFF Rider Assistance, 5 modes, suspensions semi-actives, écran TFT 5 pouces": "Front radar PFF Rider Assistance, 5 modes, semi-active suspension, 5-inch TFT screen"};
+
+/* ============================================================
+   Traduction anglaise de l'interface.
+   La clé est la phrase française : plus lisible qu'un code,
+   et la version française reste lisible dans le code source.
+   ============================================================ */
+const TRAD_UI = {
+  // Navigation et pied de page
+  "Accueil":"Home", "Marques":"Brands", "Catalogue":"Catalogue",
+  "Comparateur":"Compare", "Glossaire":"Glossary",
+  "Encyclopédie moto":"Motorcycle encyclopedia",
+  "Aller au contenu":"Skip to content",
+  "Ouvrir le menu":"Open menu",
+  // Accueil
+  "Encyclopédie indépendante":"Independent encyclopedia",
+  "marques":"brands",
+  "L'encyclopédie moto,<br>par un fan <em>pour les fans</em>.":"The motorcycle encyclopedia,<br>by a fan <em>for the fans</em>.",
+  "Ce site a été créé pour une raison simple : regarder les motos, comparer leurs caractéristiques et lire un peu de leur histoire au même endroit. Chaque modèle est repris année par année, parce que c'est souvent là que se cachent les vraies différences. Ni publicité, ni classement, ni avis : les chiffres et les faits.":"This site was built for one simple reason: to look at motorcycles, compare their specifications and read a little of their history, all in one place. Every model is covered year by year, because that is often where the real differences hide. No advertising, no rankings, no opinions. Just the figures and the facts.",
+  "Modèles":"Models", "Générations":"Generations", "Motos comparables":"Bikes side by side",
+  "Rechercher : un modèle, une marque, « cardan », « A2 »…":"Search a model, a brand, \u201cshaft drive\u201d, \u201cA2\u201d\u2026",
+  "Rechercher un modèle ou une marque":"Search a model or a brand",
+  "Rien ne correspond à cette recherche":"Nothing matches that search",
+  "Sur l'établi":"On the bench",
+  "Par constructeur":"By manufacturer",
+  "Les marques":"The brands",
+  "Chaque plaque mène à la gamme complète du constructeur, de l'entrée de gamme au haut du catalogue.":"Each plate opens the manufacturer's full range, from entry level to the top of the catalogue.",
+  "Tout voir":"See all",
+  "Les plus consultées":"Most viewed",
+  "Modèles de référence":"Benchmark models",
+  "Six machines qui structurent leur segment. Cliquez sur « Comparer » pour les empiler dans le comparateur.":"Six machines that define their segment. Click \u201cCompare\u201d to stack them side by side.",
+  "Une moto au hasard":"Random bike",
+  "Catalogue complet":"Full catalogue",
+  // Marques
+  "constructeurs":"manufacturers",
+  "Classées par pays d'origine puis par ancienneté.":"Sorted by country of origin, then by age.",
+  "fondée en":"founded in",
+  "Catégories":"Categories", "Ans":"Years",
+  // Catalogue
+  "modèles référencés":"models listed",
+  "Filtrez par catégorie, par marque ou par accessibilité au permis A2.":"Filter by category, by brand or by A2 licence eligibility.",
+  "Filtrer par catégorie":"Filter by category",
+  "Filtrer par marque":"Filter by brand",
+  "Filtrer par hauteur de selle":"Filter by seat height",
+  "Filtrer par budget":"Filter by budget",
+  "Trier les résultats":"Sort results",
+  "Toutes":"All", "Toutes les marques":"All brands", "Permis A2":"A2 licence",
+  "Selle : toutes":"Seat height: any",
+  "Selle : 780 mm ou moins":"Seat: 780 mm or less",
+  "Selle : 810 mm ou moins":"Seat: 810 mm or less",
+  "Selle : 840 mm ou moins":"Seat: 840 mm or less",
+  "Selle : plus de 840 mm":"Seat: over 840 mm",
+  "Budget : tous":"Budget: any",
+  "Moins de 7 000 €":"Under \u20ac7,000",
+  "7 000 à 12 000 €":"\u20ac7,000 to \u20ac12,000",
+  "12 000 à 20 000 €":"\u20ac12,000 to \u20ac20,000",
+  "Plus de 20 000 €":"Over \u20ac20,000",
+  "Tri : marque":"Sort: brand", "Tri : puissance":"Sort: power",
+  "Tri : poids":"Sort: weight", "Tri : cylindrée":"Sort: capacity", "Tri : prix":"Sort: price",
+  "résultat":"result", "résultats":"results",
+  "Tout effacer":"Clear all",
+  "Aucun modèle ne correspond":"No model matches",
+  "Élargissez les filtres. Le budget et la hauteur de selle sont souvent les plus restrictifs.":"Widen the filters. Budget and seat height are usually the most restrictive.",
+  // Fiche modèle
+  "cm³":"cc", "chevaux":"horsepower", "kg":"kg",
+  "Fiche détaillée":"Full details", "Comparer":"Compare", "Retirer":"Remove",
+  "Ajouter au comparateur":"Add to comparison",
+  "Toute la gamme":"The full range from",
+  "génération":"generation", "générations":"generations",
+  "sélectionnez une année-modèle":"select a model year",
+  "Ce qui change sur cette version":"What changed on this version",
+  "Moteur et transmission":"Engine and transmission",
+  "Partie cycle":"Chassis", "Mesures et équipement":"Measurements and equipment",
+  "Architecture":"Layout", "Cylindrée":"Capacity", "Puissance":"Power", "Couple":"Torque",
+  "Boîte de vitesses":"Gearbox", "Consommation":"Fuel consumption",
+  "Autonomie estimée":"Estimated range", "Cadre":"Frame",
+  "Suspension avant":"Front suspension", "Suspension arrière":"Rear suspension",
+  "Freinage":"Brakes", "Pneumatiques":"Tyres", "Empattement":"Wheelbase", "Chasse":"Trail",
+  "Poids":"Weight", "Rapport poids/puissance":"Power-to-weight ratio",
+  "Hauteur de selle":"Seat height", "Réservoir":"Fuel tank", "Électronique":"Electronics",
+  "Prix au lancement":"Launch price",
+  "Compatible, bridage possible":"Eligible, restricted version available",
+  "Non compatible":"Not eligible",
+  "kg tous pleins faits":"kg wet", "litres":"litres", "rapports":"-speed",
+  "à":"at", "tr/min":"rpm",
+  "Situation dans le catalogue":"Where it sits in the catalogue",
+  "Légèreté":"Lightness",
+  "Chiffres constructeur relevés au lancement de chaque année-modèle. Poids, puissance et tarifs varient selon le marché et l'année exacte. Vérifiez auprès du concessionnaire avant tout achat.":"Manufacturer figures as published at the launch of each model year. Weight, power and prices vary by market and by exact year. Check with a dealer before buying.",
+  "Histoire du modèle":"Model history", "Repères":"Milestones",
+  "Même famille, cylindrée et budget voisins":"Same family, similar capacity and budget",
+  "À regarder aussi":"Worth a look too",
+  // Comparateur
+  "Jusqu'à 6 machines":"Up to 6 machines",
+  "Mélangez les marques et les modèles librement. Vous pouvez aussi placer deux fois la même moto pour confronter deux de ses années.":"Mix brands and models freely. You can also place the same bike twice to set two of its years against each other.",
+  "Emplacement":"Slot", "— Choisir un modèle —":"\u2014 Choose a model \u2014",
+  "Tout retirer":"Clear all",
+  "Le comparateur est vide":"The comparison is empty",
+  "Choisissez deux à quatre modèles ci-dessus, ou cliquez sur « Comparer » depuis n'importe quelle fiche du catalogue.":"Choose two to six models above, or click \u201cCompare\u201d from any model page.",
+  "Caractéristique":"Specification",
+  "Moteur":"Engine", "Mesures":"Measurements", "Équipement et prix":"Equipment and price",
+  "Régime de puissance":"Power peak", "Régime de couple":"Torque peak",
+  "Autonomie estimée":"Estimated range",
+  "signale la valeur la plus favorable de chaque ligne : puissance et couple les plus élevés, poids et prix les plus bas. Aucune marque n'est mise en avant.":"marks the most favourable value in each row: highest power and torque, lowest weight and price. No brand is favoured.",
+  "Compatible":"Eligible",
+  // Glossaire
+  "termes expliqués":"terms explained",
+  "Les mots employés dans les fiches techniques, traduits en français courant. Aucune connaissance préalable nécessaire.":"The words used in the specification sheets, explained in plain English. No prior knowledge needed.",
+  // Divers
+  "Cette page n'existe pas":"This page does not exist",
+  "Le lien est peut-être ancien. Repartez du catalogue pour retrouver un modèle.":"The link may be out of date. Start again from the catalogue to find a model.",
+  "Ouvrir le catalogue":"Open the catalogue",
+  "aujourd'hui":"today",
+  "Le comparateur accueille 6 motos au maximum. Retirez-en une avant d'en ajouter une autre.":"The comparison holds six bikes at most. Remove one before adding another.",
+  "du comparateur":"from the comparison",
+  // Pied de page
+  "Motothèque est une encyclopédie tenue par un passionné, sans publicité ni partenariat. Les chiffres sont relevés dans les fiches constructeur, au lancement de chaque année-modèle. Ils varient selon le marché et l'année exacte. Vérifiez-les avant tout achat. Une erreur, un modèle manquant ? Les corrections sont les bienvenues.":"Motothèque is an encyclopedia kept by an enthusiast, with no advertising and no partnerships. Figures are taken from manufacturer specifications as published at the launch of each model year. They vary by market and by exact year, so check them before buying. Spotted a mistake or a missing model? Corrections are welcome.",
+  "Chaque moto est représentée par un schéma technique au trait, coté avec les mesures réelles de l'année-modèle affichée. Ces dessins ont été réalisés spécialement pour ce site.":"Every motorcycle is shown as a line drawing, dimensioned with the real measurements of the model year on display. These drawings were made specifically for this site.",
+  "Site créé par":"Site created by",
+  // Chronologie
+  "Chronologie":"Timeline",
+  "événements datés":"dated events",
+  "Toutes marques confondues, dans l'ordre. Chaque date renvoie au modèle concerné.":"All brands together, in order. Every entry links to the model it belongs to.",
+  "Filtrer par décennie":"Filter by decade",
+  // Coût d'usage
+  "Coût d'usage estimé":"Estimated running cost",
+  "Pour":"For", "km par an, hors assurance et décote.":"km a year, excluding insurance and depreciation.",
+  "par an":"per year", "du kilomètre":"per kilometre",
+  "Carburant":"Fuel", "Électricité":"Electricity", "Pneumatiques":"Tyres",
+  "Révisions":"Servicing", "Contrôle des soupapes":"Valve clearance check",
+  "Transmission":"Final drive", "Coût d'usage":"Running cost",
+  "Coût d'usage annuel":"Running cost per year",
+  "Cardan":"Shaft", "Courroie":"Belt", "Chaîne":"Chain",
+  "Estimation calculée à partir des intervalles constructeur, d'un carburant à 1,85 € le litre et d'un train de pneus moyen pour la catégorie. Les tarifs de main-d'œuvre varient fortement d'un réseau à l'autre.":"Estimated from manufacturer service intervals, fuel at €1.85 a litre and an average set of tyres for the category. Labour rates vary widely between dealer networks.",
+  "Finition de la":"A version of the",
+  "© 2026 Emerick Wbg. Tous droits réservés. Les textes et les schémas techniques de ce site sont des créations originales protégées par le droit d'auteur. Toute reproduction, même partielle, est soumise à autorisation.":"© 2026 Emerick Wbg. All rights reserved. The texts and technical drawings on this site are original works protected by copyright. Any reproduction, in whole or in part, requires prior permission.",
+};
+
+/* Catégories */
+const TRAD_CAT = {
+  roadster:{ label:'Naked',       desc:'Unfaired, upright riding position, versatile every day.' },
+  sportive:{ label:'Sportbike',   desc:'Faired, committed riding position, built for the track.' },
+  trail:{    label:'Adventure',   desc:'Big wheels, long travel, for touring and gravel.' },
+  custom:{   label:'Cruiser',     desc:'Low seat, low-down torque, generous proportions.' },
+  gt:{       label:'Sport tourer',desc:'Weather protection, luggage, comfort over distance.' },
+  retro:{    label:'Modern classic', desc:'Classic looks, modern engineering.' },
+};
+
+/* ============================================================
+   FINITIONS
+   Chaque finition devient un modèle à part entière, comparable
+   aux autres. On n'écrit ici que ce qui change par rapport au
+   modèle de base : le reste est recopié automatiquement.
+   ============================================================ */
+const FINITIONS = {
+
+'yamaha-mt-09':[
+ {n:'MT-09 SP', p:12499, a:"La MT-09 en tenue de course, suspensions Öhlins et freins Brembo.",
+  add:["Amortisseur arrière Öhlins entièrement réglable","Fourche KYB à réglages séparés","Étriers Brembo Stylema à l'avant","Régulateur de vitesse et livrée Icon Performance"],
+  s:{susAv:'Fourche KYB 41 mm entièrement réglable, réglages séparés', susAr:'Amortisseur Öhlins entièrement réglable', freins:'2 × 298 mm, étriers Brembo Stylema av. / 245 mm ar.', poids:194}}],
+
+'yamaha-tenere-700':[
+ {n:'Ténéré 700 Rally', p:13499, a:"La Ténéré à grands débattements, pour ceux qui roulent vraiment dans le sable.",
+  add:["Suspensions KYB à débattement porté à 230 mm","Selle rallye monobloc à 890 mm","Protège-mains et sabot moteur renforcés","Livrée héritée des machines du Dakar"],
+  s:{susAv:'Fourche KYB 43 mm entièrement réglable, 230 mm', susAr:'Monoamortisseur KYB, 220 mm', selle:890, poids:207}},
+ {n:'Ténéré 700 Extreme', p:14499, a:"La version la plus radicale, suspensions fermées et selle plate.",
+  add:["Suspensions à cartouche fermée","Selle plate d'une seule pièce à 910 mm","Repose-pieds larges et protections complètes","Réservé à un usage majoritairement tout-terrain"],
+  s:{susAv:'Fourche KYB à cartouche fermée, 230 mm', susAr:'Monoamortisseur KYB, 220 mm', selle:910, poids:209}}],
+
+'yamaha-r1':[
+ {n:'YZF-R1M', p:27499, a:"La R1 d'homologation, suspensions électroniques Öhlins et carénages carbone.",
+  add:["Suspensions Öhlins ERS à gestion électronique","Carénages en fibre de carbone","Enregistreur de données GPS et télémétrie","Jantes en magnésium, production limitée"],
+  s:{susAv:'Fourche Öhlins ERS électronique 43 mm', susAr:'Amortisseur Öhlins ERS électronique', poids:202, elec:'Öhlins ERS, télémétrie GPS, IMU 6 axes'}}],
+
+'yamaha-tracer-9-gt':[
+ {n:'Tracer 9', p:11299, a:"La Tracer sans les valises ni les suspensions pilotées, à 2 000 € de moins.",
+  add:["Suspensions classiques réglables à la main","Pas de valises ni de poignées chauffantes de série","Écran TFT unique de 3,5 pouces","Le même moteur et le même châssis que la GT"],
+  s:{susAv:'Fourche KYB 41 mm réglable', susAr:'Monoamortisseur, précharge et détente', poids:213, elec:'IMU 6 axes, 4 modes, shifter'}}],
+
+'honda-africa-twin':[
+ {n:'Africa Twin Adventure Sports ES', p:18490, a:"La version voyage : 24,8 litres et suspensions électroniques Showa.",
+  add:["Réservoir porté à 24,8 litres, plus de 500 km d'autonomie","Suspensions électroniques Showa EERA","Bulle plus haute et protège-mains de série","Selle réglable et béquille centrale"],
+  s:{reservoir:24.8, poids:243, susAv:'Fourche Showa EERA électronique 45 mm', susAr:'Pro-Link Showa EERA électronique', selle:'850 / 870 mm réglable'}}],
+
+'honda-cbr1000rr-r':[
+ {n:'CBR1000RR-R Fireblade', p:24999, a:"La Fireblade sans les Öhlins, pour 4 500 € de moins.",
+  add:["Suspensions Showa Big Piston à la place des Öhlins électroniques","Étriers Nissin au lieu des Brembo Stylema R","Même moteur, même châssis, mêmes ailerons","Le choix rationnel pour un usage route"],
+  s:{susAv:'Fourche Showa BPF 43 mm entièrement réglable', susAr:'Amortisseur Showa BFRC lite', freins:'2 × 330 mm, étriers Nissin av. / 220 mm ar.', poids:201}}],
+
+'honda-cb1000-hornet':[
+ {n:'CB1000 Hornet SP', p:13490, a:"Le Hornet de 157 ch avec Öhlins, Brembo et shifter de série.",
+  add:["Amortisseur arrière Öhlins TTX36","Étriers Brembo Stylema à l'avant","Shifter bidirectionnel de série","Embrayage assisté et livrée spécifique"],
+  s:{susAr:'Amortisseur Öhlins TTX36', freins:'2 × 310 mm, étriers Brembo Stylema av. / 240 mm ar.', poids:213, elec:'4 modes, shifter bidirectionnel, écran TFT 5 pouces'}}],
+
+'honda-goldwing':[
+ {n:'Gold Wing', p:24999, a:"La Gold Wing sans top-case, plus légère de 25 kg.",
+  add:["Suppression du top-case et du dossier passager","Coffres latéraux conservés","25 kg de moins que la version Tour","Boîte DCT proposée en option"],
+  s:{poids:358}}],
+
+'kawasaki-z900':[
+ {n:'Z900 SE', p:11999, a:"La Z900 avec un amortisseur Öhlins et des Brembo.",
+  add:["Amortisseur arrière Öhlins S46","Étriers Brembo M4.32 et disques de 300 mm","Fourche entièrement réglable","Selle spécifique et finitions dorées"],
+  s:{susAr:'Amortisseur Öhlins S46 entièrement réglable', freins:'2 × 300 mm, étriers Brembo M4.32 av. / 250 mm ar.', poids:213}}],
+
+'kawasaki-ninja-500':[
+ {n:'Ninja 500 SE', p:7599, a:"La Ninja 500 avec écran couleur et connectivité.",
+  add:["Écran TFT couleur de 4,3 pouces","Connectivité smartphone Rideology","Protections de cadre et livrée spécifique","Selle bicolore"],
+  s:{elec:'Écran TFT 4,3 pouces connecté, ABS', poids:172}}],
+
+'kawasaki-versys-1000':[
+ {n:'Versys 1000 S', p:13999, a:"La Versys 1000 sans les suspensions électroniques.",
+  add:["Suspensions classiques réglables à la main","Éclairage de virage adaptatif conservé","Régulateur de vitesse de série","4 000 € de moins que la SE"],
+  s:{susAv:'Fourche inversée 43 mm réglable', susAr:'Monoamortisseur, précharge à molette', poids:255}}],
+
+'kawasaki-ninja-zx10r':[
+ {n:'Ninja ZX-10RR', p:33999, a:"La version d'homologation Superbike, bielles titane et cames de course.",
+  add:["Bielles en titane Pankl","Arbres à cames de compétition","Jantes Marchesini forgées","Production limitée, selle monoplace"],
+  s:{poids:207, puissance:204, elec:'IMU 6 axes, launch control, réglages de course'}}],
+
+'suzuki-gsx-r1000r':[
+ {n:'GSX-R1000', p:16499, a:"La GSX-R sans les suspensions Showa Balance Free ni le shifter.",
+  add:["Suspensions Showa Big Piston classiques","Pas de shifter ni de launch control","Étriers Brembo conservés","1 800 € de moins que la version R"],
+  s:{susAv:'Fourche Showa BPF 43 mm entièrement réglable', susAr:'Monoamortisseur Showa, entièrement réglable', poids:202, elec:'IMU 6 axes, 10 niveaux de traction'}}],
+
+'suzuki-vstrom-800de':[
+ {n:'V-Strom 800RE', p:10499, a:"La V-Strom 800 en version routière, roue de 19 pouces.",
+  add:["Roue avant de 19 pouces à la place du 21","Débattements ramenés à 170 mm","Selle abaissée à 825 mm","Orientation purement routière"],
+  s:{pneus:'110/80-19 · 150/70-17', selle:825, poids:223, susAv:'Fourche inversée Showa 41 mm, 170 mm', susAr:'Monoamortisseur, 170 mm', abs:'De série'}}],
+
+'bmw-r1300gs':[
+ {n:'R 1300 GS Adventure', p:23500, a:"La GS de grand voyage : 30 litres et suspensions à long débattement.",
+  add:["Réservoir de 30 litres, plus de 600 km d'autonomie","Débattements allongés et protection renforcée","Réglage automatique de la garde au sol","Béquille centrale et pare-carters de série"],
+  s:{reservoir:30, poids:269, selle:'870 mm, options 850 à 890 mm'}}],
+
+'bmw-s1000rr':[
+ {n:'M 1000 RR', p:37500, a:"La version M : 212 ch, ailerons carbone et jantes carbone.",
+  add:["212 ch et bielles en titane","Ailerons en fibre de carbone","Jantes carbone, 1,6 kg économisé","Freinage M et suspensions M de série"],
+  s:{puissance:212, regPuiss:14500, poids:192, freins:'2 × 320 mm, étriers M av. / 220 mm ar.', susAv:'Fourche M 45 mm entièrement réglable'}}],
+
+'bmw-f900gs':[
+ {n:'F 800 GS', p:11500, a:"La F 900 GS assagie : roue de 19 pouces et 87 ch.",
+  add:["Roue avant de 19 pouces à la place du 21","Puissance ramenée à 87 ch","Débattements réduits, selle plus basse","2 000 € de moins que la F 900 GS"],
+  s:{puissance:87, regPuiss:6750, poids:227, selle:815, pneus:'110/80-19 · 150/70-17', susAv:'Fourche inversée 41 mm, 175 mm'}}],
+};
+
+Object.assign(FINITIONS, {
+
+'ducati-panigale-v4':[
+ {n:'Panigale V4', p:26990, a:"La Panigale sans les Öhlins électroniques, pour 6 000 € de moins.",
+  add:["Suspensions Showa et Sachs réglables à la main","Jantes en aluminium au lieu du forgé","Même moteur et même châssis que la S","Le choix de ceux qui règlent eux-mêmes"],
+  s:{susAv:'Fourche Showa BPF 43 mm entièrement réglable', susAr:'Amortisseur Sachs entièrement réglable', poids:195}},
+ {n:'Panigale V4 R', p:43990, a:"La version d'homologation Superbike : 998 cm³ et 218 ch.",
+  add:["Cylindrée ramenée à 998 cm³ pour le règlement Superbike","Bielles en titane, régime maximal de 16 500 tr/min","Carénage en carbone et boîte à cassette","Homologuée route, pensée pour la piste"],
+  s:{cylindree:998, puissance:218, regPuiss:15500, couple:111.3, regCouple:12000, poids:193}}],
+
+'ducati-multistrada-v4':[
+ {n:'Multistrada V4', p:20990, a:"La Multistrada V4 sans les suspensions Skyhook.",
+  add:["Suspensions Marzocchi réglables à la main","Radar disponible en option et non de série","Même moteur Granturismo de 170 ch","2 000 € de moins que la version S"],
+  s:{susAv:'Fourche Marzocchi 50 mm réglable', susAr:'Monoamortisseur Sachs réglable', poids:227, elec:'4 modes, IMU 6 axes, radar en option'}},
+ {n:'Multistrada V4 Rally', p:28990, a:"La version grand raid : 30 litres et roues à rayons.",
+  add:["Réservoir de 30 litres, autonomie proche de 500 km","Roues à rayons et débattements allongés","Béquille centrale et protections renforcées","Chauffage de selle et poignées chauffantes"],
+  s:{reservoir:30, poids:260, selle:'870 / 890 mm', pneus:'120/70-19 · 170/60-17'}}],
+
+'ducati-monster':[
+ {n:'Monster SP', p:14990, a:"Le Monster affûté : Öhlins, Brembo Stylema et 2 kg de moins.",
+  add:["Fourche et amortisseur Öhlins entièrement réglables","Étriers Brembo Stylema et disques de 320 mm","Échappement Termignoni homologué","Repose-pieds réglables et selle monoplace"],
+  s:{susAv:'Fourche Öhlins 43 mm entièrement réglable', susAr:'Amortisseur Öhlins entièrement réglable', freins:'2 × 320 mm, étriers Brembo Stylema av. / 245 mm ar.', poids:186}}],
+
+'ducati-desertx':[
+ {n:'DesertX Rally', p:20490, a:"La DesertX à suspensions fermées, 250 mm de débattement.",
+  add:["Fourche Kayaba à cartouche fermée, 250 mm","Carter moteur en carbone","Repose-pieds larges et selle relevée à 910 mm","Jantes renforcées pour l'usage rallye"],
+  s:{susAv:'Fourche Kayaba à cartouche fermée 48 mm, 250 mm', susAr:'Monoamortisseur Kayaba, 240 mm', selle:910, poids:227}}],
+
+'ducati-streetfighter-v4':[
+ {n:'Streetfighter V4', p:21990, a:"Le Streetfighter sans les Öhlins électroniques.",
+  add:["Suspensions Showa et Sachs réglables à la main","Ailerons biplans conservés","Mêmes 208 ch et même châssis","4 000 € de moins que la version S"],
+  s:{susAv:'Fourche Showa BPF 43 mm entièrement réglable', susAr:'Amortisseur Sachs entièrement réglable', poids:201}}],
+
+'ktm-1390-super-duke-r':[
+ {n:'1390 Super Duke R', p:19999, a:"The Beast sans les suspensions semi-actives.",
+  add:["Suspensions WP APEX réglables à la main","Même moteur CAMSHIFT de 190 ch","Pack Tech disponible en option","1 500 € de moins que la version EVO"],
+  s:{susAv:'Fourche WP APEX 48 mm réglable', susAr:'Monoamortisseur WP APEX réglable'}}],
+
+'ktm-890-adventure-r':[
+ {n:'890 Adventure', p:14199, a:"La version routière du trail KTM : selle plus basse, débattements réduits.",
+  add:["Débattements ramenés à 200 mm","Selle abaissée à 830 mm","Suspensions WP APEX au lieu des XPLOR","Même réservoir bas de 20 litres"],
+  s:{susAv:'Fourche WP APEX 43 mm, 200 mm', susAr:'Monoamortisseur WP APEX, 200 mm', selle:830, poids:'196 kg tous pleins'}}],
+
+'triumph-street-triple-765':[
+ {n:'Street Triple 765 R', p:11195, a:"La Street Triple à 120 ch, Showa et Brembo M4.32.",
+  add:["Puissance ramenée à 120 ch","Suspensions Showa aux deux extrémités","Étriers Brembo M4.32 au lieu des Stylema","2 000 € de moins que la RS"],
+  s:{puissance:120, regPuiss:11500, susAr:'Monoamortisseur Showa réglable', freins:'2 × 310 mm, étriers Brembo M4.32 av. / 220 mm ar.', poids:189}}],
+
+'triumph-tiger-900':[
+ {n:'Tiger 900 Rally Pro', p:17495, a:"La Tiger 900 tout-terrain : roue de 21 pouces à rayons.",
+  add:["Roue avant de 21 pouces à rayons","Débattements portés à 240 mm à l'avant","Modes Off-Road et Off-Road Pro","Sabot moteur et protège-mains renforcés"],
+  s:{pneus:'90/90-21 · 150/70-17', selle:'860 / 880 mm', poids:'201 kg à sec', susAv:'Fourche Showa 45 mm réglable, 240 mm', susAr:'Showa, 230 mm'}}],
+
+'triumph-tiger-1200':[
+ {n:'Tiger 1200 Rally Pro', p:23095, a:"La Tiger 1200 en version tout-terrain, roue de 21 pouces.",
+  add:["Roue avant de 21 pouces à rayons tubeless","Débattements portés à 220 mm","Sabot moteur et protections de série","Mode Off-Road Pro"],
+  s:{pneus:'90/90-21 · 150/70-18', selle:'875 / 895 mm réglable', poids:249}},
+ {n:'Tiger 1200 GT Explorer', p:24095, a:"La version grand voyage : réservoir de 30 litres.",
+  add:["Réservoir de 30 litres, plus de 500 km d'autonomie","Radar arrière de détection d'angle mort","Poignées et selle chauffantes","Béquille centrale de série"],
+  s:{reservoir:30, poids:261, elec:'6 modes, radar arrière, régulateur, écran TFT 7 pouces'}}],
+
+'triumph-speed-triple-1200-rs':[
+ {n:'Speed Triple 1200 RR', p:21995, a:"La Speed Triple carénée, avec Öhlins pilotées.",
+  add:["Carénage et demi-guidons de café racer","Suspensions Öhlins Smart EC 2.0 semi-actives","Optique ronde à LED caractéristique","5 kg de plus, position plus engagée"],
+  s:{susAv:'Fourche Öhlins NPX semi-active 43 mm', susAr:'Amortisseur Öhlins TTX36 semi-actif', poids:199, selle:830}}],
+
+'aprilia-tuono-v4':[
+ {n:'Tuono V4', p:17499, a:"Le Tuono sans les Öhlins semi-actives, 2 500 € moins cher.",
+  add:["Suspensions Sachs réglables à la main","Même V4 de 175 ch","Ailerons conservés","Jantes en aluminium au lieu du forgé"],
+  s:{susAv:'Fourche Sachs 43 mm entièrement réglable', susAr:'Amortisseur Sachs entièrement réglable', poids:213}}],
+
+'aprilia-rsv4':[
+ {n:'RSV4', p:22499, a:"La RSV4 en version standard, suspensions manuelles.",
+  add:["Suspensions Sachs entièrement réglables","Jantes en aluminium","Même V4 de 217 ch et même électronique","4 000 € de moins que la Factory"],
+  s:{susAv:'Fourche Sachs 43 mm entièrement réglable', susAr:'Amortisseur Sachs entièrement réglable', poids:205}}],
+
+'harley-pan-america':[
+ {n:'Pan America 1250', p:17495, a:"La Pan America sans les suspensions semi-actives ni l'abaissement automatique.",
+  add:["Suspensions Showa réglables à la main","Pas d'Adaptive Ride Height","Roues en aluminium coulé","2 500 € de moins que la Special"],
+  s:{susAv:'Fourche Showa 47 mm réglable, 191 mm', susAr:'Monoamortisseur Showa réglable', poids:245, selle:'850 / 875 mm'}}],
+
+'mv-brutale-800rr':[
+ {n:'Brutale 800 RR SCS', p:18990, a:"Le Brutale à embrayage automatique centrifuge.",
+  add:["Embrayage SCS à commande centrifuge","Plus de levier d'embrayage nécessaire","Passage des rapports au shifter seul","Même trois-cylindres de 140 ch"],
+  s:{boite:'6 rapports, embrayage automatique SCS', poids:'177 kg à sec'}}],
+
+'zero-srf':[
+ {n:'SR/F Premium', p:24900, a:"La SR/F avec chargeur rapide et pare-brise.",
+  add:["Chargeur embarqué porté à 6 kW","Pare-brise et poignées chauffantes","Éclairage arrière à LED spécifique","Recharge complète en moins de deux heures"],
+  s:{poids:222, elec:'Cypher III+, chargeur 6 kW, 4 modes, ABS Bosch MSC'}}],
+
+'husqvarna-norden-901':[
+ {n:'Norden 901 Expedition', p:16499, a:"La Norden équipée pour le grand voyage, valises en aluminium.",
+  add:["Suspensions WP APEX semi-actives","Valises latérales en aluminium de série","Poignées et selle chauffantes","Sabot moteur et protège-mains renforcés"],
+  s:{susAv:'Fourche WP APEX semi-active 43 mm', susAr:'Monoamortisseur WP APEX semi-actif', poids:'214 kg à sec'}}],
+
+'indian-ftr1200':[
+ {n:'FTR Rally', p:17490, a:"La FTR en tenue dirt-track : roues de 19 pouces et pneus mixtes.",
+  add:["Roues de 19 et 18 pouces à rayons","Pneus mixtes Pirelli Scorpion Rally","Selle en suédine et guidon haut","Livrée mate spécifique"],
+  s:{pneus:'120/70-19 · 150/80-18', selle:840, poids:231}}],
+
+'cfmoto-800mt':[
+ {n:'800MT Sport', p:8499, a:"La 800MT en version routière, roues de 17 pouces.",
+  add:["Roues de 17 pouces aux deux extrémités","Débattements réduits, selle abaissée","Pneus routiers de série","500 € de moins que la Touring"],
+  s:{pneus:'120/70-17 · 180/55-17', selle:815, poids:228}}],
+});
+
+Object.assign(FINITIONS, {
+
+'yamaha-xsr700':[
+ {n:'XSR700 XTribute', p:9299, a:"La XSR en tenue scrambler, pneus mixtes et selle plate.",
+  add:["Pneus mixtes de série","Selle plate d'une seule pièce","Livrée jaune et noire héritée des XT","Guidon plus large et protège-mains"],
+  s:{pneus:'120/70-17 · 180/55-17 mixtes', selle:830, poids:189}}],
+
+'yamaha-mt-10':[
+ {n:'MT-10 SP', p:19299, a:"La MT-10 à suspensions électroniques Öhlins.",
+  add:["Suspensions Öhlins électroniques à gestion semi-active","Livrée silver bleu inspirée de la R1M","Réglages de suspension pilotés depuis l'écran","Étriers Brembo Stylema"],
+  s:{susAv:'Fourche Öhlins électronique 43 mm', susAr:'Amortisseur Öhlins électronique', freins:'2 × 320 mm, étriers Brembo Stylema av. / 220 mm ar.', poids:214}}],
+
+'yamaha-xsr900':[
+ {n:'XSR900 GP', p:13499, a:"La citation la plus poussée des Yamaha de Grand Prix des années 80.",
+  add:["Carénage et bulle reprenant les YZR 500","Demi-guidons et selle monoplace","Suspensions KYB retarées, plus fermes","Livrée jaune et noire d'usine"],
+  s:{poids:200, selle:835, susAr:'Monoamortisseur KYB, précharge et détente'}}],
+
+'yamaha-tracer-7':[
+ {n:'Tracer 7 GT', p:10699, a:"La Tracer 7 livrée avec valises et poignées chauffantes.",
+  add:["Valises latérales de 20 litres de série","Poignées chauffantes","Selle confort et bulle haute","Suspension arrière à précharge à molette"],
+  s:{poids:204, susAr:'Monoamortisseur, précharge à molette et détente'}}],
+
+'honda-nc750x':[
+ {n:'NC750X DCT', p:9799, a:"La NC750X à boîte automatique à double embrayage.",
+  add:["Boîte DCT à six rapports, sans levier ni sélecteur","Modes automatique et manuel au guidon","Frein de stationnement électrique","10 kg de plus que la version manuelle"],
+  s:{boite:'DCT à 6 rapports', poids:224}}],
+
+'honda-cb750-hornet':[
+ {n:'CB750 Hornet E-Clutch', p:8790, a:"Le Hornet avec embrayage géré électroniquement.",
+  add:["Honda E-Clutch : plus besoin du levier d'embrayage","Le levier reste utilisable si on le souhaite","Démarrages et arrêts sans caler","2 kg de plus seulement"],
+  s:{boite:'6 rapports, Honda E-Clutch', poids:192, elec:'E-Clutch, 4 modes, contrôle de traction, écran TFT 5 pouces'}}],
+
+'honda-cb650r':[
+ {n:'CB650R E-Clutch', p:9499, a:"Le quatre-cylindres Honda sans levier d'embrayage.",
+  add:["Première mondiale sur une moto de série","Démarrage et changements de rapport sans levier","Levier conservé pour un usage classique","Écran TFT 5 pouces et RoadSync"],
+  s:{boite:'6 rapports, Honda E-Clutch'}}],
+
+'honda-cbr650r':[
+ {n:'CBR650R E-Clutch', p:10199, a:"La sportive A2 à quatre cylindres, sans embrayage à manœuvrer.",
+  add:["Honda E-Clutch de série","Idéal en ville et pour un jeune permis","Levier d'embrayage conservé","Écran TFT couleur 5 pouces"],
+  s:{boite:'6 rapports, Honda E-Clutch'}}],
+
+'honda-rebel-500':[
+ {n:'Rebel 500 S Edition', p:7199, a:"Le Rebel habillé en bobber, bulle et selle solo.",
+  add:["Bulle courte teintée","Selle solo à surpiqûres","Protège-phare et finitions noires","Repose-pieds avancés"],
+  s:{poids:193}}],
+
+'honda-rebel-1100':[
+ {n:'CMX1100 Rebel DCT', p:11990, a:"Le custom Honda à boîte automatique.",
+  add:["Boîte DCT à double embrayage","Aucun levier ni sélecteur","Trois modes automatiques","Rare sur un custom de cette cylindrée"],
+  s:{boite:'DCT à 6 rapports', poids:233}},
+ {n:'CMX1100 Rebel T', p:12690, a:"Le Rebel 1100 préparé pour le voyage.",
+  add:["Bulle et sacoches latérales de série","Selle plus épaisse","Support de bagages arrière","Disponible aussi en DCT"],
+  s:{poids:236}}],
+
+'kawasaki-z900rs':[
+ {n:'Z900RS SE', p:14199, a:"La Z900RS avec fourche Öhlins dorée et freins Brembo.",
+  add:["Fourche Öhlins à cartouche dorée","Étriers Brembo M4.32 et disques de 300 mm","Amortisseur Öhlins S46","Livrée verte Candy Lime signature"],
+  s:{susAv:'Fourche Öhlins entièrement réglable 41 mm', susAr:'Amortisseur Öhlins S46', freins:'2 × 300 mm, étriers Brembo M4.32 av. / 250 mm ar.', poids:217}},
+ {n:'Z900RS Café', p:13199, a:"La Z900RS en café racer, bulle et guidon abaissé.",
+  add:["Tête de fourche et bulle teintée","Guidon abaissé, position plus engagée","Selle spécifique à bossage","Livrée vert Vintage Lime"],
+  s:{poids:217, selle:820}}],
+
+'kawasaki-versys-650':[
+ {n:'Versys 650 Grand Tourer', p:10499, a:"La Versys livrée avec valises et poignées chauffantes.",
+  add:["Valises latérales de 28 litres","Poignées chauffantes de série","Bulle haute et sabot moteur","Prêt à partir sans accessoire"],
+  s:{poids:226}}],
+
+'kawasaki-z650':[
+ {n:'Z650RS', p:8899, a:"La Z650 en néo-rétro, réservoir en goutte et compteurs ronds.",
+  add:["Réservoir en goutte inspiré des Z des années 70","Deux compteurs à aiguilles","Selle plate et boucle arrière raccourcie","Éclairage LED rond"],
+  s:{poids:187, selle:820}}],
+
+'kawasaki-ninja-1000sx':[
+ {n:'Ninja 1000SX Tourer', p:14599, a:"La Ninja 1000SX équipée pour la longue distance.",
+  add:["Valises latérales de 28 litres de série","Poignées chauffantes","Bulle haute et sabot moteur","Prise 12 V supplémentaire"],
+  s:{poids:243}}],
+
+'kawasaki-vulcan-s':[
+ {n:'Vulcan S Café', p:8199, a:"Le Vulcan S avec bulle et selle solo.",
+  add:["Tête de fourche et bulle courte","Selle solo","Finitions noires spécifiques","Même système Ergo-Fit à trois tailles"],
+  s:{poids:231}}],
+
+'suzuki-sv650':[
+ {n:'SV650X', p:8199, a:"La SV650 en café racer, demi-guidons et selle solo.",
+  add:["Demi-guidons montés sous le té","Tête de fourche et bulle teintée","Selle solo à surpiqûres marron","Fourche à réglage de précharge"],
+  s:{poids:200, selle:790}}],
+
+'suzuki-vstrom-650xt':[
+ {n:'V-Strom 650', p:8799, a:"La V-Strom 650 à jantes bâton, 500 € moins chère.",
+  add:["Jantes en aluminium coulé au lieu des rayons","Pneus routiers de série","Même moteur et même équipement","Orientation strictement routière"],
+  s:{poids:213}}],
+
+'suzuki-gsx-s1000':[
+ {n:'GSX-S1000GT', p:14499, a:"La GSX-S1000 carénée, taillée pour avaler des étapes.",
+  add:["Carénage intégral et bulle réglable","Écran TFT 6,5 pouces avec navigation","Valises latérales disponibles","Position redressée et selle confort"],
+  s:{poids:226, selle:810, reservoir:19, elec:'Ride-by-wire, 3 modes, shifter bidirectionnel, écran TFT 6,5 pouces connecté'}}],
+});
+
+Object.assign(FINITIONS, {
+
+'bmw-r12-ninet':[
+ {n:'R 12', p:15900, a:"La R 12 nineT abaissée, orientée custom.",
+  add:["Selle abaissée à 754 mm","Guidon plus bas et repose-pieds avancés","Puissance ramenée à 95 ch","Fourche non réglable, jantes à rayons"],
+  s:{puissance:95, regPuiss:6500, couple:110, selle:754, poids:220, susAv:'Fourche inversée 45 mm'}}],
+
+'bmw-r18':[
+ {n:'R 18 Classic', p:21500, a:"La R 18 en tenue de voyage, pare-brise et sacoches cuir.",
+  add:["Pare-brise démontable et sacoches en cuir","Roue avant de 16 pouces","Phare additionnel et repose-pieds avancés","Selle solo à ressorts apparents"],
+  s:{poids:365, pneus:'130/90-16 · 180/65-16'}},
+ {n:'R 18 Transcontinental', p:27500, a:"Le grand tourisme selon BMW, top-case et audio.",
+  add:["Carénage intégral et top-case","Système audio Marshall","Régulateur de vitesse et poignées chauffantes","427 kg, la plus lourde du catalogue"],
+  s:{poids:427, reservoir:24, elec:'3 modes, ASC, régulateur, audio Marshall, écran TFT 10,25 pouces'}}],
+
+'bmw-g310r':[
+ {n:'G 310 GS', p:5900, a:"La petite BMW en version trail, roue de 19 pouces.",
+  add:["Roue avant de 19 pouces","Débattements allongés et garde au sol relevée","Bec et protège-mains","Selle à 835 mm"],
+  s:{pneus:'110/80-19 · 150/70-17', selle:835, poids:175, susAv:'Fourche inversée 41 mm, 180 mm'}}],
+
+'ducati-scrambler-icon':[
+ {n:'Scrambler Full Throttle', p:11390, a:"Le Scrambler en tenue de flat-track.",
+  add:["Échappement Termignoni à double sortie basse","Guidon bas et selle plate","Livrée noire et jaune inspirée du flat-track","Numéro de plaque latérale"],
+  s:{poids:186}},
+ {n:'Scrambler Nightshift', p:11190, a:"Le Scrambler dépouillé, guidon plat et selle plate.",
+  add:["Guidon plat et rétroviseurs en bout de guidon","Selle plate à deux places","Jantes à rayons","Clignotants à LED discrets"],
+  s:{poids:186}}],
+
+'ducati-hypermotard-698':[
+ {n:'Hypermotard 698 Mono RVE', p:13290, a:"L'Hypermotard en livrée graffiti, avec shifter.",
+  add:["Livrée Graffiti Evo appliquée à la main","Shifter bidirectionnel de série","Jantes à bâtons noires","Même monocylindre de 77,5 ch"],
+  s:{elec:'IMU 6 axes, Slide by Brake, shifter bidirectionnel, 3 modes'}}],
+
+'ducati-multistrada-v2':[
+ {n:'Multistrada V2 S', p:20990, a:"La Multistrada V2 à suspensions semi-actives.",
+  add:["Suspensions semi-actives Marzocchi","Abaissement automatique à l'arrêt","Écran TFT 6,5 pouces et éclairage de virage","Poignées chauffantes de série"],
+  s:{susAv:'Fourche Marzocchi semi-active 45 mm', susAr:'Monoamortisseur semi-actif, abaissement automatique', poids:214}}],
+
+'ktm-1290-super-adventure-s':[
+ {n:'1290 Super Adventure R', p:20499, a:"La grosse KTM en version tout-terrain, roue de 21 pouces.",
+  add:["Roue avant de 21 pouces à rayons","Suspensions WP XPLOR à 220 mm","Selle relevée à 880 mm","Sabot moteur et protections renforcées"],
+  s:{pneus:'90/90-21 · 150/70-18', selle:880, poids:'221 kg à sec', susAv:'Fourche WP XPLOR 48 mm, 220 mm', susAr:'Monoamortisseur WP XPLOR, 220 mm'}}],
+
+'ktm-690-smc-r':[
+ {n:'690 Enduro R', p:11699, a:"Le monocylindre KTM en version enduro, roues de 21 et 18 pouces.",
+  add:["Roues de 21 et 18 pouces à rayons","Débattements portés à 250 mm","Pneus à crampons homologués","Selle à 910 mm"],
+  s:{pneus:'90/90-21 · 140/80-18', selle:910, poids:'146 kg à sec', susAv:'Fourche WP XPLOR 48 mm, 250 mm', susAr:'Monoamortisseur WP XPLOR, 250 mm'}}],
+
+'triumph-bonneville-t120':[
+ {n:'Bonneville T120 Black', p:13895, a:"La T120 tout en noir, chromes supprimés.",
+  add:["Moteur, échappements et jantes en noir","Compteurs à fond noir","Selle spécifique","Même mécanique que la T120"],
+  s:{}}],
+
+'triumph-rocket-3':[
+ {n:'Rocket 3 GT', p:23595, a:"La Rocket en configuration voyage, repose-pieds avancés.",
+  add:["Repose-pieds avancés et guidon reculé","Selle abaissée à 750 mm et dosseret passager","Poignées chauffantes de série","Bulle de série"],
+  s:{selle:750, poids:294}}],
+
+'triumph-speed-400':[
+ {n:'Scrambler 400 X', p:5895, a:"La Speed 400 en version scrambler, roue de 19 pouces.",
+  add:["Roue avant de 19 pouces","Débattements allongés et garde au sol relevée","Protège-mains, sabot et pare-carters","Guidon plus large, selle à 835 mm"],
+  s:{pneus:'110/70-19 · 150/60-17', selle:835, poids:179, susAv:'Fourche inversée 43 mm, 150 mm'}}],
+
+'triumph-speed-twin-900':[
+ {n:'Scrambler 900', p:10495, a:"La Speed Twin 900 en scrambler, double sortie haute.",
+  add:["Échappement à double sortie haute","Roue avant de 19 pouces","Guidon large et protège-mains","Selle plate à 790 mm"],
+  s:{pneus:'100/90-19 · 150/70-17', poids:223, selle:790}}],
+
+'aprilia-rs660':[
+ {n:'RS 660 Factory', p:12699, a:"La RS 660 allégée, suspensions Öhlins et jantes forgées.",
+  add:["Amortisseur Öhlins entièrement réglable","Jantes forgées, 2 kg économisés","Shifter bidirectionnel de série","Livrée Factory spécifique"],
+  s:{susAr:'Amortisseur Öhlins entièrement réglable', poids:181, elec:'IMU 6 axes, APRC complet, 5 modes, shifter bidirectionnel'}}],
+
+'aprilia-tuareg-660':[
+ {n:'Tuareg 660 Rally', p:14699, a:"La Tuareg en tenue de rallye, protections complètes.",
+  add:["Sabot moteur et protège-mains renforcés","Réservoir arrière disponible","Livrée rallye Aprilia Racing","Selle rallye et repose-pieds larges"],
+  s:{poids:206, selle:870}}],
+
+'aprilia-tuono-660':[
+ {n:'Tuono 660 Factory', p:12399, a:"Le Tuono 660 affûté, suspensions Öhlins et 5 kg de moins.",
+  add:["Amortisseur Öhlins entièrement réglable","Jantes forgées et échappement allégé","Selle monoplace","Shifter bidirectionnel de série"],
+  s:{susAr:'Amortisseur Öhlins entièrement réglable', poids:178}}],
+
+'harley-nightster':[
+ {n:'Nightster Special', p:15495, a:"Le Nightster avec selle double et guidon haut.",
+  add:["Selle double et guidon relevé","Écran rond de 4 pouces","Suspensions arrière à précharge réglable","Repose-pieds passager de série"],
+  s:{poids:227, selle:710, elec:'3 modes, contrôle de traction, écran rond 4 pouces'}}],
+
+'harley-road-glide':[
+ {n:'Road Glide ST', p:32995, a:"La Road Glide en version performance, moteur 121.",
+  add:["Moteur Milwaukee-Eight 121 de série","Suspensions à débattement augmenté","Suppression du dossier et allègement","Livrée Performance spécifique"],
+  s:{cylindree:1977, puissance:127, regPuiss:4500, couple:189, poids:369}}],
+
+'harley-low-rider-s':[
+ {n:'Low Rider ST', p:26995, a:"La Low Rider en bagger, carénage et sacoches rigides.",
+  add:["Carénage de type Road Glide monté sur cadre","Sacoches rigides latérales","Même moteur 117","Position de conduite inchangée"],
+  s:{poids:326, reservoir:18.9}}],
+
+'royal-super-meteor-650':[
+ {n:'Super Meteor 650 Tourer', p:7699, a:"Le Super Meteor livré avec bulle et dosseret.",
+  add:["Bulle haute et dosseret passager","Selle confort à deux niveaux","Porte-bagages arrière","Prêt pour la longue distance"],
+  s:{poids:245}}],
+
+'guzzi-v7':[
+ {n:'V7 Special', p:9899, a:"La V7 en finition chromée, jantes à rayons.",
+  add:["Jantes à rayons chromées","Réservoir avec bandes peintes à la main","Compteurs à deux cadrans","Finitions chromées sur les carters"],
+  s:{poids:223}}],
+
+'guzzi-v85tt':[
+ {n:'V85 TT Travel', p:14999, a:"La V85 TT livrée avec valises et pare-brise.",
+  add:["Valises latérales et pare-brise majoré","Poignées chauffantes de série","Feux additionnels à LED","Sabot moteur"],
+  s:{poids:238}}],
+
+'guzzi-v100':[
+ {n:'V100 Mandello S', p:17999, a:"La V100 à suspensions Öhlins semi-actives.",
+  add:["Suspensions Öhlins semi-actives","Poignées et selle chauffantes","Régulateur de vitesse adaptatif","Éclairage de virage adaptatif"],
+  s:{susAv:'Fourche Öhlins semi-active 43 mm', susAr:'Amortisseur Öhlins semi-actif', poids:235}}],
+
+'zero-dsrx':[
+ {n:'DSR/X Black Forest', p:28400, a:"La DSR/X équipée pour le voyage, valises et protections.",
+  add:["Valises latérales et top-case","Pare-carters et protège-mains","Feux additionnels à LED","Chargeur rapide de 6,6 kW"],
+  s:{poids:261}}],
+
+'husqvarna-svartpilen-801':[
+ {n:'Vitpilen 801', p:11499, a:"La flèche blanche : même base, guidon bas et pneus routiers.",
+  add:["Guidon plat et position plus engagée","Pneus routiers de série","Livrée blanche caractéristique","Selle abaissée"],
+  s:{selle:815, poids:181, pneus:'120/70-17 · 180/55-17'}}],
+
+'indian-scout-bobber':[
+ {n:'Super Scout', p:17490, a:"Le Scout en version voyage, sacoches et pare-brise.",
+  add:["Sacoches latérales en cuir et pare-brise","Selle double confort et dosseret","Repose-pieds avancés","Écran rond de 4 pouces"],
+  s:{poids:268, selle:660}},
+ {n:'Sport Scout', p:15490, a:"Le Scout sportif : guidon moto, bulle courte, suspensions revues.",
+  add:["Guidon plat de type moto et bulle courte","Suspensions arrière à débattement augmenté","Écran rond de 4 pouces","Repose-pieds centraux"],
+  s:{poids:253, selle:665}}],
+
+'cfmoto-450sr':[
+ {n:'450SS', p:5999, a:"La 450 en version sport-GT, position redressée.",
+  add:["Demi-guidons montés au-dessus du té","Bulle plus haute et carénage revu","Position moins engagée","Même twin de 50 ch"],
+  s:{poids:175, selle:800}}],
+
+'cfmoto-700clx':[
+ {n:'700CL-X Sport', p:6999, a:"La CL-X en café racer, demi-guidons et Brembo.",
+  add:["Demi-guidons et selle solo","Étrier Brembo à l'avant","Amortisseur arrière piggyback","Livrée grise mate"],
+  s:{freins:'320 mm, étrier Brembo av. / 260 mm ar.', poids:198, selle:795}},
+ {n:'700CL-X Adventure', p:7299, a:"La CL-X à pneus mixtes et protections.",
+  add:["Pneus mixtes et roue avant de 19 pouces","Protège-mains et sabot moteur","Guidon large et selle plate","Bulle courte"],
+  s:{pneus:'110/80-19 · 150/70-17', poids:204, selle:820}}],
+});
+
+/* Expansion : chaque finition devient un modèle complet, en héritant
+   de tout ce qui n'est pas explicitement redéfini. */
+(function deployerFinitions(){
+  const ajouts = [];
+  Object.entries(FINITIONS).forEach(([baseId, liste]) => {
+    const base = MODELS.find(m => m.id === baseId);
+    if(!base) return;
+    const g0 = base.gens[base.gens.length - 1];
+    liste.forEach(v => {
+      // Identifiant : sans accent, et garanti unique face au modèle de base
+      let id = baseId.split('-')[0] + '-' + v.n
+        .normalize('NFD').replace(/[\u0300-\u036f]/g, '')
+        .toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+      const pris = new Set(MODELS.map(x => x.id).concat(ajouts.map(x => x.id)));
+      if(pris.has(id)) id += '-std';
+      ajouts.push({
+        id,
+        brand: base.brand, cat: base.cat, silhouette: base.silhouette, photo: '',
+        nom: v.n, base: baseId, baseNom: base.nom,
+        accroche: v.a,
+        recit: base.recit,
+        histoire: base.histoire, jalons: base.jalons,
+        gens: [{ code: 'FIN', an: g0.an, titre: v.n,
+                 s: Object.assign({}, g0.s, v.s, { prix: v.p }),
+                 diff: v.add }],
+      });
+    });
+  });
+  ajouts.forEach(m => MODELS.push(m));
+})();
+
+/* ============================================================
+   COÛT D'USAGE
+   Hypothèses volontairement explicites et affichées sur le site :
+   mieux vaut un chiffre discutable mais transparent qu'un chiffre
+   précis dont personne ne connaît la méthode.
+   ============================================================ */
+const HYPOTHESES = { km: 8000, carburant: 1.85, electricite: 0.22, mainOeuvre: 85 };
+
+/* Intervalles constructeur en kilomètres, et tarif horaire du réseau. */
+const ENTRETIEN = {
+  yamaha:{rev:10000, soup:40000, tarif:1.0}, honda:{rev:12000, soup:25600, tarif:1.0},
+  kawasaki:{rev:12000, soup:24000, tarif:1.0}, suzuki:{rev:12000, soup:24000, tarif:1.0},
+  bmw:{rev:10000, soup:20000, tarif:1.35}, ducati:{rev:12000, soup:30000, tarif:1.45},
+  ktm:{rev:15000, soup:30000, tarif:1.2}, triumph:{rev:16000, soup:32000, tarif:1.15},
+  aprilia:{rev:10000, soup:20000, tarif:1.25}, harley:{rev:8000, soup:0, tarif:1.3},
+  royal:{rev:10000, soup:20000, tarif:0.8}, mv:{rev:15000, soup:30000, tarif:1.5},
+  guzzi:{rev:10000, soup:20000, tarif:1.15}, zero:{rev:0, soup:0, tarif:1.0},
+  husqvarna:{rev:15000, soup:30000, tarif:1.2}, indian:{rev:8000, soup:0, tarif:1.25},
+  cfmoto:{rev:10000, soup:20000, tarif:0.85},
+};
+/* Écarts connus par rapport à la règle de la marque. */
+const ENTRETIEN_MODELE = {
+  'ducati-multistrada-v4':{soup:60000}, 'ducati-multistrada-v4-rally':{soup:60000},
+  'ducati-multistrada-v4-2':{soup:60000},
+  'ducati-panigale-v2':{soup:30000}, 'ducati-multistrada-v2':{soup:30000},
+  'honda-nc750x':{rev:12000, soup:25600}, 'bmw-r1300gs':{rev:10000, soup:20000},
+};
+
+/* Pneumatiques : prix d'un train monté et durée de vie moyenne, par famille. */
+const PNEUS = {
+  sportive:{ prix:400, duree:7000 },  roadster:{ prix:330, duree:11000 },
+  trail:{    prix:350, duree:12000 }, custom:{   prix:410, duree:16000 },
+  gt:{       prix:370, duree:13000 }, retro:{    prix:300, duree:12000 },
+};
+
+/* Transmission : le cardan coûte presque rien, la chaîne se remplace. */
+const TRANSMISSION = {
+  cardan:{ nom:'Cardan',   annuel:45 },
+  courroie:{ nom:'Courroie', annuel:55 },
+  chaine:{ nom:'Chaîne',   annuel:0 },   // calculé au kilométrage
+};
+const CARDAN = ['bmw-r1300gs','bmw-r1300rt','bmw-r12-ninet','bmw-r18','bmw-r-1300-gs-adventure',
+  'guzzi-v7','guzzi-v85tt','guzzi-v100','guzzi-stelvio','triumph-rocket-3','triumph-tiger-1200',
+  'triumph-tiger-1200-rally-pro','triumph-tiger-1200-gt-explorer','honda-goldwing','honda-gold-wing'];
+const COURROIE = ['harley-sportster-s','harley-pan-america','harley-nightster','harley-fat-boy',
+  'harley-road-glide','harley-low-rider-s','harley-street-glide','harley-pan-america-1250',
+  'indian-ftr1200','indian-scout-bobber','indian-ftr-rally','zero-srf','zero-dsrx','zero-sr-f-premium'];
 
 /* ============================================================
    Schémas techniques — un dessin au trait par famille de moto.
@@ -3045,10 +3881,37 @@ const etat = {
 
 const app = document.getElementById('app');
 
+/* ---------- Langue ----------
+   Elle vit dans l'adresse (#/en/...), ce qui rend chaque lien partageable
+   dans la bonne langue. Le français reste la racine. */
+let langue = 'fr';
+
+/* T() traduit une chaîne d'interface, tt() une valeur technique. */
+const T  = s => (langue === 'en' && TRAD_UI[s]) ? TRAD_UI[s] : s;
+const tt = v => (langue === 'en' && typeof v === 'string' && TRAD_SPECS[v]) ? TRAD_SPECS[v] : v;
+
+/* rt() préfixe une adresse interne avec la langue courante. */
+const rt = h => (langue === 'en' && h.startsWith('#/') && !h.startsWith('#/en'))
+  ? h.replace('#/', '#/en/') : h;
+
+function changerLangue(l){
+  if(l === langue) return;
+  langue = l;
+  document.documentElement.lang = l;
+  const p = (location.hash || '#/').replace(/^#\/(en\/)?/, '');
+  location.hash = (l === 'en' ? '#/en/' : '#/') + p;
+  if(!location.hash.includes(p)) rendre();
+}
+
 /* ---------- Utilitaires ---------- */
 const parId = id => MODELS.find(m => m.id === id);
 const marqueDe = m => BRANDS.find(b => b.id === m.brand);
-const catDe = m => CATEGORIES.find(c => c.id === m.cat);
+const catBrute = m => CATEGORIES.find(c => c.id === m.cat);
+const catDe = m => {
+  const c = catBrute(m);
+  return (langue === 'en' && TRAD_CAT[c.id])
+    ? { id:c.id, label:TRAD_CAT[c.id].label, desc:TRAD_CAT[c.id].desc } : c;
+};
 const derniere = m => m.gens[m.gens.length - 1];
 const modelesDe = id => MODELS.filter(m => m.brand === id);
 
@@ -3062,7 +3925,7 @@ function num(v){
 }
 function euros(v){
   const n = num(v);
-  return n === null ? '—' : n.toLocaleString('fr-FR') + ' €';
+  return n === null ? '—' : (langue === 'en' ? '€' + n.toLocaleString('en-GB') : n.toLocaleString('fr-FR') + ' €');
 }
 function esc(s){
   return String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
@@ -3070,19 +3933,25 @@ function esc(s){
 function annees(m){
   const p = m.gens[0].an.split(/[–-]/)[0].trim();
   const d = derniere(m).an;
-  return d.includes('→') ? `${p} → aujourd'hui` : `${p} – ${d.split(/[–-]/).pop().trim()}`;
+  return d.includes('→') ? `${p} → ${T("aujourd'hui")}` : `${p} – ${d.split(/[–-]/).pop().trim()}`;
 }
 
 /* ---------- En-tête ---------- */
 function majNav(){
   const h = location.hash || '#/';
   document.querySelectorAll('.nav a').forEach(a => {
-    const actif = a.getAttribute('href') === h ||
+    const base = a.getAttribute('href').replace('#/en/', '#/');
+    if(a.dataset.fr) a.textContent = T(a.dataset.fr);
+    const actif = rt(base) === h ||
       (a.dataset.prefixe && h.startsWith(a.dataset.prefixe));
     a.classList.toggle('actif', !!actif);
     if(actif) a.setAttribute('aria-current','page'); else a.removeAttribute('aria-current');
   });
   document.querySelector('.nav').classList.remove('deploye');
+  document.querySelectorAll('[data-langue]').forEach(b => {
+    const actif = b.dataset.langue === langue;
+    b.setAttribute('aria-current', actif ? 'true' : 'false');
+  });
 }
 
 /* ---------- Fiche modèle (carte) ---------- */
@@ -3103,18 +3972,78 @@ function carte(m){
       <h3 class="fiche-nom"><a href="#/modele/${m.id}">${esc(m.nom)}</a></h3>
       <p class="fiche-accroche">${esc(m.accroche)}</p>
       <div class="fiche-chiffres">
-        <div class="fiche-chiffre"><b>${num(s.cylindree) ? num(s.cylindree) : '—'}</b><span>cm³</span></div>
-        <div class="fiche-chiffre"><b>${num(s.puissance) || '—'}</b><span>chevaux</span></div>
-        <div class="fiche-chiffre"><b>${num(s.poids) || '—'}</b><span>kg</span></div>
+        <div class="fiche-chiffre"><b>${num(s.cylindree) ? num(s.cylindree) : '—'}</b><span>${T('cm³')}</span></div>
+        <div class="fiche-chiffre"><b>${num(s.puissance) || '—'}</b><span>${T('chevaux')}</span></div>
+        <div class="fiche-chiffre"><b>${num(s.poids) || '—'}</b><span>${T('kg')}</span></div>
       </div>
       <div class="fiche-actions">
-        <a class="bouton bouton-plein" href="#/modele/${m.id}">Fiche détaillée</a>
+        <a class="bouton bouton-plein" href="#/modele/${m.id}">${T('Fiche détaillée')}</a>
         <button class="bouton" data-compare="${m.id}" aria-pressed="${dansCompa}">
-          ${dansCompa ? 'Retirer' : 'Comparer'}
+          ${T(dansCompa ? 'Retirer' : 'Comparer')}
         </button>
       </div>
     </div>
   </article>`;
+}
+
+/* ---------- Coût d'usage ----------
+   Toutes les hypothèses sont affichées à l'écran. Un chiffre transparent
+   vaut mieux qu'un chiffre précis dont on ignore la méthode. */
+function transmissionDe(m){
+  if(CARDAN.includes(m.id) || CARDAN.includes(m.base)) return 'cardan';
+  if(COURROIE.includes(m.id) || COURROIE.includes(m.base)) return 'courroie';
+  const s = derniere(m).s;
+  if(/courroie/i.test(String(s.boite))) return 'courroie';
+  if(/cardan/i.test(String(s.susAr) + s.cadre + m.recit)) return 'cardan';
+  return 'chaine';
+}
+
+function coutUsage(m){
+  const s = derniere(m).s;
+  const H = HYPOTHESES;
+  const ent = Object.assign({}, ENTRETIEN[m.brand] || {rev:12000, soup:24000, tarif:1},
+                            ENTRETIEN_MODELE[m.id] || ENTRETIEN_MODELE[m.base] || {});
+  const elec = m.brand === 'zero';
+  const postes = [];
+
+  // Énergie
+  if(elec){
+    postes.push({ nom:'Électricité', v: Math.round(H.km / 100 * 6.5 * H.electricite),
+                  det:'6,5 kWh aux 100 km' });
+  } else {
+    const c = num(s.conso) || 5;
+    postes.push({ nom:'Carburant', v: Math.round(H.km / 100 * c * H.carburant),
+                  det: c.toString().replace('.', ',') + ' l/100 km' });
+  }
+
+  // Pneumatiques
+  const p = PNEUS[m.cat] || PNEUS.roadster;
+  postes.push({ nom:'Pneumatiques', v: Math.round(H.km / p.duree * p.prix),
+                det:'un train tous les ' + p.duree.toLocaleString('fr-FR') + ' km' });
+
+  // Révisions et soupapes
+  if(ent.rev){
+    const prixRev = Math.round(220 * ent.tarif);
+    postes.push({ nom:'Révisions', v: Math.round(H.km / ent.rev * prixRev),
+                  det:'tous les ' + ent.rev.toLocaleString('fr-FR') + ' km' });
+  }
+  if(ent.soup){
+    const prixSoup = Math.round(420 * ent.tarif);
+    postes.push({ nom:'Contrôle des soupapes', v: Math.round(H.km / ent.soup * prixSoup),
+                  det:'tous les ' + ent.soup.toLocaleString('fr-FR') + ' km' });
+  }
+
+  // Transmission
+  const tr = transmissionDe(m);
+  if(tr === 'chaine'){
+    postes.push({ nom:'Transmission', v: Math.round(H.km / 25000 * 230 + 35),
+                  det:'kit chaîne tous les 25 000 km' });
+  } else {
+    postes.push({ nom:'Transmission', v: TRANSMISSION[tr].annuel, det: TRANSMISSION[tr].nom.toLowerCase() });
+  }
+
+  const total = postes.reduce((a, x) => a + x.v, 0);
+  return { postes, total, parKm: total / H.km, transmission: TRANSMISSION[tr].nom, elec };
 }
 
 /* ---------- Vue : accueil ---------- */
@@ -3129,29 +4058,26 @@ function vueAccueil(){
   <section class="hero contenu">
     <div class="hero-grille">
       <div>
-        <p class="etiquette">Encyclopédie indépendante · ${BRANDS.length} marques</p>
-        <h1>L'encyclopédie moto,<br>par un fan <em>pour les fans</em>.</h1>
+        <p class="etiquette">${T('Encyclopédie indépendante')} · ${BRANDS.length} ${T('marques')}</p>
+        <h1>${T("L'encyclopédie moto,<br>par un fan <em>pour les fans</em>.")}</h1>
         <p class="hero-texte">
-          Ce site a été créé pour une raison simple : regarder les motos, comparer leurs
-          caractéristiques et lire un peu de leur histoire au même endroit. Chaque modèle est
-          repris année par année, parce que c'est souvent là que se cachent les vraies
-          différences. Ni publicité, ni classement, ni avis : les chiffres et les faits.
+          ${T("Ce site a été créé pour une raison simple : regarder les motos, comparer leurs caractéristiques et lire un peu de leur histoire au même endroit. Chaque modèle est repris année par année, parce que c'est souvent là que se cachent les vraies différences. Ni publicité, ni classement, ni avis : les chiffres et les faits.")}
         </p>
         <div class="compteurs">
-          <div class="compteur"><b>${BRANDS.length}</b><span>Marques</span></div>
-          <div class="compteur"><b>${MODELS.length}</b><span>Modèles</span></div>
-          <div class="compteur"><b>${nbGen}</b><span>Générations</span></div>
-          <div class="compteur"><b>6</b><span>Motos comparables</span></div>
+          <div class="compteur"><b>${BRANDS.length}</b><span>${T('Marques')}</span></div>
+          <div class="compteur"><b>${MODELS.length}</b><span>${T('Modèles')}</span></div>
+          <div class="compteur"><b>${nbGen}</b><span>${T('Générations')}</span></div>
+          <div class="compteur"><b>6</b><span>${T('Motos comparables')}</span></div>
         </div>
         <div class="recherche">
           <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></svg>
           <input type="search" id="recherche" placeholder="Rechercher un modèle ou une marque…"
-                 autocomplete="off" aria-label="Rechercher un modèle ou une marque">
+                 autocomplete="off" aria-label="${T('Rechercher un modèle ou une marque')}">
           <div id="suggestions"></div>
         </div>
       </div>
       <div>
-        <p class="etiquette" style="margin-bottom:10px">Sur l'établi · ${esc(marqueDe(v).nom)} ${esc(v.nom)}</p>
+        <p class="etiquette" style="margin-bottom:10px">${T("Sur l'établi")} · ${esc(marqueDe(v).nom)} ${esc(v.nom)}</p>
         <a href="#/modele/${v.id}">${schema(v, g, {cotes:true, anime:true})}</a>
       </div>
     </div>
@@ -3160,11 +4086,11 @@ function vueAccueil(){
   <section class="section contenu">
     <div class="section-tete">
       <div>
-        <p class="etiquette">Par constructeur</p>
-        <h2>Les marques</h2>
-        <p>Chaque plaque mène à la gamme complète du constructeur, de l'entrée de gamme au haut du catalogue.</p>
+        <p class="etiquette">${T('Par constructeur')}</p>
+        <h2>${T('Les marques')}</h2>
+        <p>${T("Chaque plaque mène à la gamme complète du constructeur, de l'entrée de gamme au haut du catalogue.")}</p>
       </div>
-      <a class="bouton" href="#/marques" style="flex:0 0 auto;padding:10px 18px">Tout voir</a>
+      <a class="bouton" href="#/marques" style="flex:0 0 auto;padding:10px 18px">${T('Tout voir')}</a>
     </div>
     <div class="grille-marques">
       ${BRANDS.slice(0,8).map(b => plaqueMarque(b)).join('')}
@@ -3174,13 +4100,13 @@ function vueAccueil(){
   <section class="section contenu">
     <div class="section-tete">
       <div>
-        <p class="etiquette">Les plus consultées</p>
-        <h2>Modèles de référence</h2>
-        <p>Six machines qui structurent leur segment. Cliquez sur « Comparer » pour les empiler dans le comparateur.</p>
+        <p class="etiquette">${T('Les plus consultées')}</p>
+        <h2>${T('Modèles de référence')}</h2>
+        <p>${T("Six machines qui structurent leur segment. Cliquez sur « Comparer » pour les empiler dans le comparateur.")}</p>
       </div>
       <div style="display:flex;gap:8px;flex:0 0 auto">
-        <button class="bouton" data-hasard style="padding:10px 18px">Une moto au hasard</button>
-        <a class="bouton bouton-plein" href="#/modeles" style="padding:10px 18px">Catalogue complet</a>
+        <button class="bouton" data-hasard style="padding:10px 18px">${T('Une moto au hasard')}</button>
+        <a class="bouton bouton-plein" href="#/modeles" style="padding:10px 18px">${T('Catalogue complet')}</a>
       </div>
     </div>
     <div class="grille-modeles">${populaires.map(carte).join('')}</div>
@@ -3201,13 +4127,13 @@ function plaqueMarque(b){
 function vueMarques(){
   return `
   <div class="contenu">
-    <p class="fil"><a href="#/">Accueil</a> / Marques</p>
+    <p class="fil"><a href="#/">${T('Accueil')}</a> / ${T('Marques')}</p>
     <section class="section" style="border-top:none;padding-top:24px">
       <div class="section-tete">
         <div>
-          <p class="etiquette">${BRANDS.length} constructeurs</p>
-          <h2>Les marques</h2>
-          <p>Classées par pays d'origine puis par ancienneté.</p>
+          <p class="etiquette">${BRANDS.length} ${T('constructeurs')}</p>
+          <h2>${T('Les marques')}</h2>
+          <p>${T("Classées par pays d'origine puis par ancienneté.")}</p>
         </div>
       </div>
       <div class="grille-marques">${
@@ -3226,18 +4152,18 @@ function vueMarque(id){
   const cats = [...new Set(liste.map(m => m.cat))];
   return `
   <div class="contenu">
-    <p class="fil"><a href="#/">Accueil</a> / <a href="#/marques">Marques</a> / ${esc(b.nom)}</p>
+    <p class="fil"><a href="#/">${T('Accueil')}</a> / <a href="#/marques">${T('Marques')}</a> / ${esc(b.nom)}</p>
     <section class="section" style="border-top:none;padding-top:24px">
       <div class="section-tete">
         <div>
-          <p class="etiquette">${esc(b.pays)} · fondée en ${b.fonde} · ${esc(b.ville)}</p>
+          <p class="etiquette">${esc(b.pays)} · ${T('fondée en')} ${b.fonde} · ${esc(b.ville)}</p>
           <h2>${esc(b.nom)}</h2>
           <p>${esc(b.note)}</p>
         </div>
         <div class="compteurs" style="flex:0 0 auto;min-width:260px">
-          <div class="compteur"><b>${liste.length}</b><span>Modèles</span></div>
-          <div class="compteur"><b>${cats.length}</b><span>Catégories</span></div>
-          <div class="compteur"><b>${new Date().getFullYear() - b.fonde}</b><span>Ans</span></div>
+          <div class="compteur"><b>${liste.length}</b><span>${T('Modèles')}</span></div>
+          <div class="compteur"><b>${cats.length}</b><span>${T('Catégories')}</span></div>
+          <div class="compteur"><b>${new Date().getFullYear() - b.fonde}</b><span>${T('Ans')}</span></div>
         </div>
       </div>
       <div class="grille-modeles">${liste.map(carte).join('')}</div>
@@ -3287,57 +4213,57 @@ function vueModeles(){
 
   return `
   <div class="contenu">
-    <p class="fil"><a href="#/">Accueil</a> / Catalogue</p>
+    <p class="fil"><a href="#/">${T('Accueil')}</a> / ${T('Catalogue')}</p>
     <section class="section" style="border-top:none;padding-top:24px">
       <div class="section-tete">
         <div>
-          <p class="etiquette">${MODELS.length} modèles référencés</p>
-          <h2>Catalogue</h2>
-          <p>Filtrez par catégorie, par marque ou par accessibilité au permis A2.</p>
+          <p class="etiquette">${MODELS.length} ${T('modèles référencés')}</p>
+          <h2>${T('Catalogue')}</h2>
+          <p>${T("Filtrez par catégorie, par marque ou par accessibilité au permis A2.")}</p>
         </div>
       </div>
 
       <div class="filtres">
-        <div class="filtre-groupe" role="group" aria-label="Filtrer par catégorie">
-          <button data-filtre="cat" data-valeur="" aria-pressed="${!f.cat}">Toutes</button>
+        <div class="filtre-groupe" role="group" aria-label="${T('Filtrer par catégorie')}">
+          <button data-filtre="cat" data-valeur="" aria-pressed="${!f.cat}">${T('Toutes')}</button>
           ${CATEGORIES.map(c => `<button data-filtre="cat" data-valeur="${c.id}" aria-pressed="${f.cat===c.id}">${esc(c.label)}</button>`).join('')}
         </div>
-        <select class="filtre-select" data-filtre="marque" aria-label="Filtrer par marque">
-          <option value="">Toutes les marques</option>
+        <select class="filtre-select" data-filtre="marque" aria-label="${T('Filtrer par marque')}">
+          <option value="">${T('Toutes les marques')}</option>
           ${BRANDS.map(b => `<option value="${b.id}" ${f.marque===b.id?'selected':''}>${esc(b.nom)}</option>`).join('')}
         </select>
         <div class="filtre-groupe">
-          <button data-filtre="a2" data-valeur="1" aria-pressed="${f.a2}">Permis A2</button>
+          <button data-filtre="a2" data-valeur="1" aria-pressed="${f.a2}">${T('Permis A2')}</button>
         </div>
-        <select class="filtre-select" data-filtre="selle" aria-label="Filtrer par hauteur de selle">
-          <option value="">Selle : toutes</option>
-          <option value="780" ${f.selle==='780'?'selected':''}>Selle : 780 mm ou moins</option>
-          <option value="810" ${f.selle==='810'?'selected':''}>Selle : 810 mm ou moins</option>
-          <option value="840" ${f.selle==='840'?'selected':''}>Selle : 840 mm ou moins</option>
-          <option value="haut" ${f.selle==='haut'?'selected':''}>Selle : plus de 840 mm</option>
+        <select class="filtre-select" data-filtre="selle" aria-label="${T('Filtrer par hauteur de selle')}">
+          <option value="">${T('Selle : toutes')}</option>
+          <option value="780" ${f.selle==='780'?'selected':''}>${T('Selle : 780 mm ou moins')}</option>
+          <option value="810" ${f.selle==='810'?'selected':''}>${T('Selle : 810 mm ou moins')}</option>
+          <option value="840" ${f.selle==='840'?'selected':''}>${T('Selle : 840 mm ou moins')}</option>
+          <option value="haut" ${f.selle==='haut'?'selected':''}>${T('Selle : plus de 840 mm')}</option>
         </select>
-        <select class="filtre-select" data-filtre="prix" aria-label="Filtrer par budget">
-          <option value="">Budget : tous</option>
-          <option value="a" ${f.prix==='a'?'selected':''}>Moins de 7 000 €</option>
-          <option value="b" ${f.prix==='b'?'selected':''}>7 000 à 12 000 €</option>
-          <option value="c" ${f.prix==='c'?'selected':''}>12 000 à 20 000 €</option>
-          <option value="d" ${f.prix==='d'?'selected':''}>Plus de 20 000 €</option>
+        <select class="filtre-select" data-filtre="prix" aria-label="${T('Filtrer par budget')}">
+          <option value="">${T('Budget : tous')}</option>
+          <option value="a" ${f.prix==='a'?'selected':''}>${T('Moins de 7 000 €')}</option>
+          <option value="b" ${f.prix==='b'?'selected':''}>${T('7 000 à 12 000 €')}</option>
+          <option value="c" ${f.prix==='c'?'selected':''}>${T('12 000 à 20 000 €')}</option>
+          <option value="d" ${f.prix==='d'?'selected':''}>${T('Plus de 20 000 €')}</option>
         </select>
-        <select class="filtre-select" data-filtre="tri" aria-label="Trier les résultats">
-          <option value="marque" ${f.tri==='marque'?'selected':''}>Tri : marque</option>
-          <option value="puissance" ${f.tri==='puissance'?'selected':''}>Tri : puissance</option>
-          <option value="poids" ${f.tri==='poids'?'selected':''}>Tri : poids</option>
-          <option value="cylindree" ${f.tri==='cylindree'?'selected':''}>Tri : cylindrée</option>
-          <option value="prix" ${f.tri==='prix'?'selected':''}>Tri : prix</option>
+        <select class="filtre-select" data-filtre="tri" aria-label="${T('Trier les résultats')}">
+          <option value="marque" ${f.tri==='marque'?'selected':''}>${T('Tri : marque')}</option>
+          <option value="puissance" ${f.tri==='puissance'?'selected':''}>${T('Tri : puissance')}</option>
+          <option value="poids" ${f.tri==='poids'?'selected':''}>${T('Tri : poids')}</option>
+          <option value="cylindree" ${f.tri==='cylindree'?'selected':''}>${T('Tri : cylindrée')}</option>
+          <option value="prix" ${f.tri==='prix'?'selected':''}>${T('Tri : prix')}</option>
         </select>
-        <span class="compte-resultats" aria-live="polite">${liste.length} résultat${liste.length>1?'s':''}</span>
-        ${(f.marque||f.cat||f.a2||f.selle||f.prix) ? '<button class="bouton" id="raz-filtres" style="flex:0 0 auto">Tout effacer</button>' : ''}
+        <span class="compte-resultats" aria-live="polite">${liste.length} ${T(liste.length>1 ? 'résultats' : 'résultat')}</span>
+        ${(f.marque||f.cat||f.a2||f.selle||f.prix) ? `<button class="bouton" id="raz-filtres" style="flex:0 0 auto">${T('Tout effacer')}</button>` : ''}
       </div>
 
       ${liste.length ? `<div class="grille-modeles">${liste.map(carte).join('')}</div>` : `
         <div class="vide">
-          <h3>Aucun modèle ne correspond</h3>
-          <p>Élargissez les filtres. Le budget et la hauteur de selle sont souvent les plus restrictifs.</p>
+          <h3>${T('Aucun modèle ne correspond')}</h3>
+          <p>${T("Élargissez les filtres. Le budget et la hauteur de selle sont souvent les plus restrictifs.")}</p>
         </div>`}
     </section>
   </div>`;
@@ -3349,7 +4275,9 @@ function proches(m, n){
   const s = derniere(m).s;
   const p = num(s.prix), c = num(s.cylindree);
   return MODELS
-    .filter(x => x.id !== m.id && x.cat === m.cat)
+    .filter(x => x.id !== m.id && x.cat === m.cat
+      && x.base !== m.id && m.base !== x.id
+      && !(x.base && m.base && x.base === m.base))
     .map(x => {
       const sx = derniere(x).s;
       const px = num(sx.prix), cx = num(sx.cylindree);
@@ -3376,7 +4304,7 @@ function vueModele(id, iGen){
   const auto = (num(s.reservoir) && num(s.conso)) ? Math.round(num(s.reservoir)*100/num(s.conso)) + ' km' : '—';
 
   const ligne = (k,v) => v == null || v === '' ? '' :
-    `<div class="ligne-tech"><dt>${esc(k)}</dt><dd>${esc(v)}</dd></div>`;
+    `<div class="ligne-tech"><dt>${esc(T(k))}</dt><dd>${esc(tt(v))}</dd></div>`;
 
   // Jauges : la moto située par rapport à l'ensemble du catalogue
   const toutes = MODELS.map(x => derniere(x).s);
@@ -3395,16 +4323,17 @@ function vueModele(id, iGen){
 
   return `
   <div class="contenu">
-    <p class="fil"><a href="#/">Accueil</a> / <a href="#/marque/${b.id}">${esc(b.nom)}</a> / ${esc(m.nom)}</p>
+    <p class="fil"><a href="#/">${T('Accueil')}</a> / <a href="#/marque/${b.id}">${esc(b.nom)}</a> / ${esc(m.nom)}</p>
 
     <section class="modele-tete">
       <div>
         <p class="modele-marque">${esc(b.nom)} · ${esc(catDe(m).label)} · ${esc(annees(m))}</p>
+        ${m.base ? `<p class="finition-lien">${T('Finition de la')} <a href="#/modele/${m.base}">${esc(m.baseNom)}</a></p>` : ''}
         <h1>${esc(m.nom)}</h1>
         <p class="modele-recit">${esc(m.recit)}</p>
         <div class="fiche-actions" style="margin-top:24px;max-width:400px">
           <button class="bouton bouton-plein" data-compare="${m.id}" data-gen="${i}">
-            Ajouter au comparateur
+            ${T('Ajouter au comparateur')}
           </button>
           ${m.gens.length > 1
             ? `<button class="bouton" data-compare-gens="${m.id}">Comparer ses ${m.gens.length} années</button>`
@@ -3418,7 +4347,7 @@ function vueModele(id, iGen){
 
     <section style="padding-bottom:60px">
       <p class="etiquette" style="margin-bottom:10px">
-        ${m.gens.length} génération${m.gens.length>1?'s':''} · sélectionnez une année-modèle
+        ${m.gens.length} ${T(m.gens.length>1 ? 'générations' : 'génération')} · sélectionnez une année-modèle
       </p>
       <div class="frise" role="tablist" aria-label="Générations de ${esc(m.nom)}">
         ${m.gens.map((gg,k) => `
@@ -3430,25 +4359,25 @@ function vueModele(id, iGen){
 
       <div class="gen-corps">
         <div class="gen-changements">
-          <h3>Ce qui change sur cette version</h3>
+          <h3>${T('Ce qui change sur cette version')}</h3>
           <ul>${g.diff.map(d => `<li>${esc(d)}</li>`).join('')}</ul>
         </div>
 
         <div class="fiche-tech">
           <div class="tech-col">
-            <h4>Moteur et transmission</h4>
+            <h4>${T('Moteur et transmission')}</h4>
             <dl style="margin:0">
               ${ligne('Architecture', s.moteur)}
-              ${ligne('Cylindrée', num(s.cylindree) ? num(s.cylindree) + ' cm³' : s.cylindree)}
-              ${ligne('Puissance', num(s.puissance) ? `${s.puissance} ch${num(s.regPuiss) ? ' à ' + num(s.regPuiss).toLocaleString('fr-FR') + ' tr/min' : ''}` : null)}
-              ${ligne('Couple', num(s.couple) ? `${s.couple} Nm${s.regCouple ? ' à ' + (num(s.regCouple) ? num(s.regCouple).toLocaleString('fr-FR') + ' tr/min' : s.regCouple) : ''}` : null)}
-              ${ligne('Boîte de vitesses', typeof s.boite === 'number' ? s.boite + ' rapports' : s.boite)}
+              ${ligne('Cylindrée', num(s.cylindree) ? num(s.cylindree) + ' ' + T('cm³') : s.cylindree)}
+              ${ligne('Puissance', num(s.puissance) ? `${s.puissance} ch${num(s.regPuiss) ? ' ' + T('à') + ' ' + num(s.regPuiss).toLocaleString(langue === 'en' ? 'en-GB' : 'fr-FR') + ' ' + T('tr/min') : ''}` : null)}
+              ${ligne('Couple', num(s.couple) ? `${s.couple} Nm${s.regCouple ? ' ' + T('à') + ' ' + (num(s.regCouple) ? num(s.regCouple).toLocaleString(langue === 'en' ? 'en-GB' : 'fr-FR') + ' ' + T('tr/min') : s.regCouple) : ''}` : null)}
+              ${ligne('Boîte de vitesses', typeof s.boite === 'number' ? s.boite + (langue === 'en' ? T('rapports') : ' rapports') : s.boite)}
               ${ligne('Consommation', s.conso)}
               ${ligne('Autonomie estimée', auto)}
             </dl>
           </div>
           <div class="tech-col">
-            <h4>Partie cycle</h4>
+            <h4>${T('Partie cycle')}</h4>
             <dl style="margin:0">
               ${ligne('Cadre', s.cadre)}
               ${ligne('Suspension avant', s.susAv)}
@@ -3460,15 +4389,15 @@ function vueModele(id, iGen){
             </dl>
           </div>
           <div class="tech-col">
-            <h4>Mesures et équipement</h4>
+            <h4>${T('Mesures et équipement')}</h4>
             <dl style="margin:0">
-              ${ligne('Poids', typeof s.poids === 'number' ? s.poids + ' kg tous pleins faits' : s.poids)}
+              ${ligne('Poids', typeof s.poids === 'number' ? s.poids + ' ' + T('kg tous pleins faits') : s.poids)}
               ${ligne('Rapport poids/puissance', pp)}
               ${ligne('Hauteur de selle', typeof s.selle === 'number' ? s.selle + ' mm' : s.selle)}
-              ${ligne('Réservoir', typeof s.reservoir === 'number' ? s.reservoir + ' litres' : s.reservoir)}
+              ${ligne('Réservoir', typeof s.reservoir === 'number' ? s.reservoir + ' ' + T('litres') : s.reservoir)}
               ${ligne('Électronique', s.elec)}
               ${ligne('ABS', s.abs)}
-              ${ligne('Permis A2', s.a2 ? 'Compatible, bridage possible' : 'Non compatible')}
+              ${ligne('Permis A2', T(s.a2 ? 'Compatible, bridage possible' : 'Non compatible'))}
               ${ligne('Prix au lancement', euros(s.prix))}
             </dl>
           </div>
@@ -3476,13 +4405,13 @@ function vueModele(id, iGen){
 
         <div style="border-top:1px solid var(--trait)">
           <h4 style="font-family:var(--mno);font-weight:500;font-size:12px;letter-spacing:.16em;color:var(--craie-3);padding:16px 26px 4px;text-transform:uppercase">
-            Situation dans le catalogue
+            ${T('Situation dans le catalogue')}
           </h4>
           <div class="jauges">
-            ${jauge('Puissance', s.puissance, 'puissance', 'ch')}
-            ${jauge('Couple', s.couple, 'couple', 'Nm')}
-            ${jauge('Légèreté', s.poids, 'poids', 'kg', true)}
-            ${jauge('Hauteur de selle', s.selle, 'selle', 'mm')}
+            ${jauge(T('Puissance'), s.puissance, 'puissance', 'ch')}
+            ${jauge(T('Couple'), s.couple, 'couple', 'Nm')}
+            ${jauge(T('Légèreté'), s.poids, 'poids', 'kg', true)}
+            ${jauge(T('Hauteur de selle'), s.selle, 'selle', 'mm')}
           </div>
         </div>
       </div>
@@ -3490,12 +4419,12 @@ function vueModele(id, iGen){
       ${m.histoire ? `
       <div class="histoire">
         <div>
-          <h3>Histoire du modèle</h3>
+          <h3>${T('Histoire du modèle')}</h3>
           ${m.histoire.map(p => `<p>${esc(p)}</p>`).join('')}
         </div>
         ${m.jalons && m.jalons.length ? `
         <div>
-          <h3>Repères</h3>
+          <h3>${T('Repères')}</h3>
           <ul class="jalons">
             ${m.jalons.map(j => `<li class="jalon"><b>${esc(j.an)}</b><span>${esc(j.fait)}</span></li>`).join('')}
           </ul>
@@ -3503,13 +4432,33 @@ function vueModele(id, iGen){
       </div>` : ''}
 
       ${(() => {
+        const c = coutUsage(m);
+        return `
+        <div class="cout">
+          <div class="cout-tete">
+            <h3>${T("Coût d'usage estimé")}</h3>
+            <p>${T('Pour')} ${HYPOTHESES.km.toLocaleString(langue === 'en' ? 'en-GB' : 'fr-FR')} ${T('km par an, hors assurance et décote.')}</p>
+          </div>
+          <div class="cout-chiffre">
+            <b>${Math.round(c.total).toLocaleString(langue === 'en' ? 'en-GB' : 'fr-FR')} €</b>
+            <span>${T('par an')}</span>
+            <em>${c.parKm.toFixed(3).replace('.', langue === 'en' ? '.' : ',')} € ${T('du kilomètre')}</em>
+          </div>
+          <ul class="cout-postes">
+            ${c.postes.map(p => `<li><span>${T(p.nom)}</span><b>${p.v.toLocaleString(langue === 'en' ? 'en-GB' : 'fr-FR')} €</b><em>${esc(p.det)}</em></li>`).join('')}
+          </ul>
+          <p class="cout-note">${T("Estimation calculée à partir des intervalles constructeur, d'un carburant à 1,85 € le litre et d'un train de pneus moyen pour la catégorie. Les tarifs de main-d'œuvre varient fortement d'un réseau à l'autre.")}</p>
+        </div>`;
+      })()}
+
+      ${(() => {
         const v = proches(m, 3);
         return v.length ? `
         <section class="section" style="padding-bottom:0">
           <div class="section-tete">
             <div>
-              <p class="etiquette">Même famille, cylindrée et budget voisins</p>
-              <h2>À regarder aussi</h2>
+              <p class="etiquette">${T('Même famille, cylindrée et budget voisins')}</p>
+              <h2>${T('À regarder aussi')}</h2>
             </div>
           </div>
           <div class="grille-modeles">${v.map(carte).join('')}</div>
@@ -3517,8 +4466,7 @@ function vueModele(id, iGen){
       })()}
 
       <p class="avis" style="margin-top:22px">
-        Chiffres constructeur relevés au lancement de chaque année-modèle. Poids, puissance et tarifs
-        varient selon le marché et l'année exacte. Vérifiez auprès du concessionnaire avant tout achat.
+        ${T("Chiffres constructeur relevés au lancement de chaque année-modèle. Poids, puissance et tarifs varient selon le marché et l'année exacte. Vérifiez auprès du concessionnaire avant tout achat.")}
       </p>
     </section>
   </div>`;
@@ -3552,6 +4500,10 @@ const LIGNES_COMPA = [
   { cle:'freins',      nom:'Freinage' },
   { cle:'pneus',       nom:'Pneumatiques' },
 
+  { groupe:'Coût d\'usage' },
+  { derive:'cout',  nom:"Coût d'usage annuel", unite:'€', sens:'min' },
+  { derive:'trans', nom:'Transmission' },
+
   { groupe:'Équipement et prix' },
   { cle:'elec',        nom:'Électronique' },
   { cle:'abs',         nom:'ABS' },
@@ -3559,7 +4511,9 @@ const LIGNES_COMPA = [
   { cle:'prix',        nom:'Prix au lancement', unite:'€', sens:'min' },
 ];
 
-function valeurCompa(l, s){
+function valeurCompa(l, s, modele){
+  if(l.derive === 'cout')  return modele ? Math.round(coutUsage(modele).total) : null;
+  if(l.derive === 'trans') return modele ? T(coutUsage(modele).transmission) : null;
   if(l.derive === 'pp'){
     const p = num(s.poids), c = num(s.puissance);
     return p && c ? p/c : null;
@@ -3573,14 +4527,15 @@ function valeurCompa(l, s){
 
 function afficheCompa(l, v){
   if(v === null || v === undefined || v === '') return '—';
-  if(l.cle === 'a2') return v ? 'Compatible' : 'Non compatible';
-  if(l.cle === 'prix') return euros(v);
+  if(l.cle === 'a2') return T(v ? 'Compatible' : 'Non compatible');
+  if(l.cle === 'prix' || l.derive === 'cout') return euros(v);
   if(l.derive === 'pp') return v.toFixed(2) + ' kg/ch';
   if(typeof v === 'number'){
-    const n = l.unite === 'tr/min' ? v.toLocaleString('fr-FR') : v;
-    return l.unite ? `${n} ${l.unite}` : String(n);
+    const n = l.unite === 'tr/min' ? v.toLocaleString(langue === 'en' ? 'en-GB' : 'fr-FR') : v;
+    const u = l.unite ? T(l.unite) : '';
+    return u ? `${n} ${u}` : String(n);
   }
-  return String(v);
+  return String(tt(v));
 }
 
 function urlCompa(){
@@ -3592,9 +4547,10 @@ function urlCompa(){
    pour qu'un lien copié rouvre exactement la même comparaison. */
 function syncCompa(){
   majGarage();
-  if((location.hash || '').startsWith('#/comparateur')){
+  if(/^#\/(en\/)?comparateur/.test(location.hash || '')){
     const u = urlCompa();
-    if(location.hash !== u) location.hash = u; else rendre();
+    const ru = rt(u);
+    if(location.hash !== ru) location.hash = ru; else rendre();
   } else rendre();
 }
 
@@ -3616,9 +4572,9 @@ function vueComparateur(param){
     const m = c ? parId(c.modeleId) : null;
     return `
     <div class="selecteur">
-      <label for="sel-${k}">Emplacement ${k+1}</label>
+      <label for="sel-${k}">${T('Emplacement')} ${k+1}</label>
       <select id="sel-${k}" data-slot="${k}">
-        <option value="">— Choisir un modèle —</option>
+        <option value="">${T('— Choisir un modèle —')}</option>
         ${BRANDS.map(b => `
           <optgroup label="${esc(b.nom)}">
             ${modelesDe(b.id).map(x => `<option value="${x.id}" ${m && m.id===x.id ? 'selected' : ''}>${esc(x.nom)}</option>`).join('')}
@@ -3635,26 +4591,27 @@ function vueComparateur(param){
 
   let tableau = `
     <div class="vide">
-      <h3>Le comparateur est vide</h3>
-      <p>Choisissez deux à quatre modèles ci-dessus, ou cliquez sur « Comparer » depuis n'importe quelle fiche du catalogue.</p>
+      <h3>${T('Le comparateur est vide')}</h3>
+      <p>${T("Choisissez deux à quatre modèles ci-dessus, ou cliquez sur « Comparer » depuis n'importe quelle fiche du catalogue.")}</p>
     </div>`;
 
   if(retenus.length >= 1){
     const corps = LIGNES_COMPA.map(l => {
-      if(l.groupe) return `<tr class="sep"><th scope="row">${esc(l.groupe)}</th>${retenus.map(()=>'<td></td>').join('')}</tr>`;
-      const vals = retenus.map(r => valeurCompa(l, r.g.s));
+      if(l.groupe) return `<tr class="sep"><th scope="row">${esc(T(l.groupe))}</th>${retenus.map(()=>'<td></td>').join('')}</tr>`;
+      const vals = retenus.map(r => valeurCompa(l, r.g.s, r.m));
       const nums = vals.map(num).filter(v => v !== null);
       let cible = null;
       if(l.sens && nums.length > 1){
         cible = l.sens === 'max' ? Math.max(...nums) : Math.min(...nums);
         if(nums.filter(v => v === cible).length === nums.length) cible = null; // toutes égales
       }
-      const cells = vals.map(v => {
+      const cells = vals.map((v, i) => {
         const n = num(v);
         const best = cible !== null && n === cible;
-        return `<td class="${best ? 'meilleur' : ''}">${esc(afficheCompa(l, v))}</td>`;
+        const r = retenus[i];
+        return `<td class="${best ? 'meilleur' : ''}" data-moto="${esc(marqueDe(r.m).nom + ' ' + r.m.nom)}">${esc(afficheCompa(l, v))}</td>`;
       }).join('');
-      return `<tr><th scope="row">${esc(l.nom)}</th>${cells}</tr>`;
+      return `<tr><th scope="row">${esc(T(l.nom))}</th>${cells}</tr>`;
     }).join('');
 
     tableau = `
@@ -3666,10 +4623,10 @@ function vueComparateur(param){
           </figure>`).join('')}
       </div>
       <div class="tableau-enveloppe">
-        <table class="comparatif">
+        <table class="comparatif" data-n="${retenus.length}">
           <thead>
             <tr>
-              <th scope="col" style="min-width:190px">Caractéristique</th>
+              <th scope="col" style="min-width:190px">${T('Caractéristique')}</th>
               ${retenus.map(r => `
                 <th scope="col" style="min-width:200px">
                   <span class="th-marque">${esc(marqueDe(r.m).nom)}</span>
@@ -3681,21 +4638,20 @@ function vueComparateur(param){
           <tbody>${corps}</tbody>
         </table>
       </div>
-      <p class="legende"><b>▲</b> signale la valeur la plus favorable de chaque ligne : puissance et couple les plus élevés,
-        poids et prix les plus bas. Aucune marque n'est mise en avant.</p>`;
+      <p class="legende"><b>▲</b> ${T("signale la valeur la plus favorable de chaque ligne : puissance et couple les plus élevés, poids et prix les plus bas. Aucune marque n'est mise en avant.")}</p>`;
   }
 
   return `
   <div class="contenu">
-    <p class="fil"><a href="#/">Accueil</a> / Comparateur</p>
+    <p class="fil"><a href="#/">${T('Accueil')}</a> / ${T('Comparateur')}</p>
     <section class="section" style="border-top:none;padding-top:24px">
       <div class="section-tete">
         <div>
-          <p class="etiquette">Jusqu'à 6 machines</p>
-          <h2>Comparateur</h2>
-          <p>Mélangez les marques et les modèles librement. Vous pouvez aussi placer deux fois la même moto pour confronter deux de ses années.</p>
+          <p class="etiquette">${T("Jusqu'à 6 machines")}</p>
+          <h2>${T('Comparateur')}</h2>
+          <p>${T("Mélangez les marques et les modèles librement. Vous pouvez aussi placer deux fois la même moto pour confronter deux de ses années.")}</p>
         </div>
-        ${retenus.length ? '<button class="bouton" id="vider" style="flex:0 0 auto;padding:10px 18px">Tout retirer</button>' : ''}
+        ${retenus.length ? `<button class="bouton" id="vider" style="flex:0 0 auto;padding:10px 18px">${T('Tout retirer')}</button>` : ''}
       </div>
       <div class="selecteurs">${selecteurs}</div>
       ${tableau}
@@ -3708,13 +4664,13 @@ function vueGlossaire(){
   const nb = GLOSSAIRE.reduce((a, g) => a + g.mots.length, 0);
   return `
   <div class="contenu">
-    <p class="fil"><a href="#/">Accueil</a> / Glossaire</p>
+    <p class="fil"><a href="#/">${T('Accueil')}</a> / ${T('Glossaire')}</p>
     <section class="section" style="border-top:none;padding-top:24px">
       <div class="section-tete">
         <div>
-          <p class="etiquette">${nb} termes expliqués</p>
-          <h2>Glossaire</h2>
-          <p>Les mots employés dans les fiches techniques, traduits en français courant. Aucune connaissance préalable nécessaire.</p>
+          <p class="etiquette">${nb} ${T('termes expliqués')}</p>
+          <h2>${T('Glossaire')}</h2>
+          <p>${T("Les mots employés dans les fiches techniques, traduits en français courant. Aucune connaissance préalable nécessaire.")}</p>
         </div>
       </div>
       ${GLOSSAIRE.map(g => `
@@ -3735,18 +4691,98 @@ function vueGlossaire(){
   </div>`;
 }
 
+/* ---------- Vue : chronologie ----------
+   Les 439 repères datés des fiches modèle, remis bout à bout. */
+function vueChronologie(filtre){
+  const evts = [];
+  MODELS.forEach(m => {
+    if(m.base) return;                       // on ne compte pas deux fois une finition
+    (m.jalons || []).forEach(j => evts.push({ an:+j.an, fait:j.fait, m }));
+  });
+  evts.sort((a, b) => a.an - b.an || a.m.nom.localeCompare(b.m.nom));
+
+  const decennies = [...new Set(evts.map(e => Math.floor(e.an / 10) * 10))];
+  const dec = filtre ? parseInt(filtre, 10) : null;
+  const vus = dec ? evts.filter(e => Math.floor(e.an / 10) * 10 === dec) : evts;
+
+  // Frise de densité : une barre par décennie
+  const parDec = {};
+  evts.forEach(e => { const d = Math.floor(e.an / 10) * 10; parDec[d] = (parDec[d] || 0) + 1; });
+  const mx = Math.max(...Object.values(parDec));
+
+  // Regroupement par année
+  const annees = [];
+  vus.forEach(e => {
+    const d = annees[annees.length - 1];
+    if(d && d.an === e.an) d.faits.push(e); else annees.push({ an:e.an, faits:[e] });
+  });
+
+  return `
+  <div class="contenu">
+    <p class="fil"><a href="#/">${T('Accueil')}</a> / ${T('Chronologie')}</p>
+    <section class="section" style="border-top:none;padding-top:24px">
+      <div class="section-tete">
+        <div>
+          <p class="etiquette">${evts.length} ${T('événements datés')} · ${evts[0].an} → ${evts[evts.length-1].an}</p>
+          <h2>${T('Chronologie')}</h2>
+          <p>${T("Toutes marques confondues, dans l'ordre. Chaque date renvoie au modèle concerné.")}</p>
+        </div>
+      </div>
+
+      <div class="frise-densite" role="group" aria-label="${T('Filtrer par décennie')}">
+        ${decennies.map(d => `
+          <button data-decennie="${d}" aria-pressed="${dec === d}" title="${parDec[d]} ${T('événements datés')}">
+            <span class="fd-barre" style="height:${Math.max(8, Math.round(parDec[d] / mx * 100))}%"></span>
+            <span class="fd-an">${String(d).slice(2)}</span>
+          </button>`).join('')}
+        ${dec ? `<button data-decennie="" class="fd-raz">${T('Tout voir')}</button>` : ''}
+      </div>
+
+      <ol class="chrono">
+        ${annees.map(a => `
+          <li class="chrono-an">
+            <div class="chrono-date">${a.an}</div>
+            <div class="chrono-faits">
+              ${a.faits.map(e => `
+                <a class="chrono-fait" href="#/modele/${e.m.id}">
+                  <span class="cf-moto">${esc(marqueDe(e.m).nom)} ${esc(e.m.nom)}</span>
+                  <span class="cf-texte">${esc(e.fait)}</span>
+                </a>`).join('')}
+            </div>
+          </li>`).join('')}
+      </ol>
+    </section>
+  </div>`;
+}
+
 function vueIntrouvable(){
   return `
   <div class="contenu">
     <section class="section" style="border-top:none">
       <div class="vide">
-        <h3>Cette page n'existe pas</h3>
-        <p>Le lien est peut-être ancien. Repartez du catalogue pour retrouver un modèle.</p>
-        <a class="bouton bouton-plein" href="#/modeles" style="display:inline-block;margin-top:18px;padding:10px 24px">Ouvrir le catalogue</a>
+        <h3>${T("Cette page n'existe pas")}</h3>
+        <p>${T("Le lien est peut-être ancien. Repartez du catalogue pour retrouver un modèle.")}</p>
+        <a class="bouton bouton-plein" href="#/modeles" style="display:inline-block;margin-top:18px;padding:10px 24px">${T('Ouvrir le catalogue')}</a>
       </div>
     </section>
   </div>`;
 }
+
+/* Le tableau bascule en mode empilé dès que la largeur disponible ne suffit
+   plus : cela dépend de l'écran, mais aussi du nombre de motos comparées.
+   Six machines ne tiennent pas sur un portable, deux tiennent sur une tablette. */
+function ajusterComparateur(){
+  const t = document.querySelector('table.comparatif');
+  if(!t) return;
+  const n = +t.dataset.n || 2;
+  t.classList.toggle('empile', window.innerWidth < 230 + n * 210);
+}
+
+let minuteurLargeur;
+window.addEventListener('resize', () => {
+  clearTimeout(minuteurLargeur);
+  minuteurLargeur = setTimeout(ajusterComparateur, 120);
+});
 
 /* ---------- Panier de comparaison ---------- */
 function majGarage(){
@@ -3757,11 +4793,11 @@ function majGarage(){
   g.querySelector('.garage-liste').innerHTML = etat.comparateur.map((c,i) => {
     const m = parId(c.modeleId);
     return `<span class="jeton">${esc(marqueDe(m).nom)} ${esc(m.nom)}
-      <button data-retirer="${i}" aria-label="Retirer ${esc(m.nom)} du comparateur">×</button></span>`;
+      <button data-retirer="${i}" aria-label="${T('Retirer')} ${esc(m.nom)} ${T('du comparateur')}">×</button></span>`;
   }).join('');
   const lien = g.querySelector('#aller-compa');
-  lien.textContent = `Comparer (${n})`;
-  lien.setAttribute('href', urlCompa());
+  lien.textContent = `${T('Comparer')} (${n})`;
+  lien.setAttribute('href', rt(urlCompa()));
 }
 
 function basculerCompa(id, genIndex){
@@ -3769,7 +4805,7 @@ function basculerCompa(id, genIndex){
   if(i >= 0){ etat.comparateur.splice(i,1); }
   else {
     if(etat.comparateur.length >= 6){
-      alert('Le comparateur accueille 6 motos au maximum. Retirez-en une avant d\'en ajouter une autre.');
+      alert(T('Le comparateur accueille 6 motos au maximum. Retirez-en une avant d\'en ajouter une autre.'));
       return;
     }
     const m = parId(id);
@@ -3790,7 +4826,7 @@ function indexRecherche(){
     const morceaux = [
       m.nom, marqueDe(m).nom, catDe(m).label, m.accroche,
       s.moteur, s.cadre, s.elec, s.freins, s.pneus, s.susAv, s.susAr, s.abs,
-      typeof s.boite === 'string' ? s.boite : s.boite + ' rapports',
+      typeof s.boite === 'string' ? s.boite : s.boite + (langue === 'en' ? T('rapports') : ' rapports'),
       s.a2 ? 'permis A2 bridable debutant' : '',
       num(s.cylindree) ? num(s.cylindree) + ' cm3' : 'electrique',
     ];
@@ -3822,7 +4858,7 @@ function brancherRecherche(){
       .slice(0, 8).map(e => e.m);
     if(!res.length){
       boite.className = 'suggestions';
-      boite.innerHTML = `<button disabled style="color:var(--craie-3);cursor:default">Rien ne correspond à cette recherche</button>`;
+      boite.innerHTML = `<button disabled style="color:var(--craie-3);cursor:default">${T('Rien ne correspond à cette recherche')}</button>`;
       return;
     }
     boite.className = 'suggestions';
@@ -3838,7 +4874,7 @@ function brancherRecherche(){
     if(!b) return;
     champ.value = '';
     fermer();
-    location.hash = '#/modele/' + b.dataset.aller;
+    location.hash = rt('#/modele/' + b.dataset.aller);
   });
 
   /* Un seul écouteur pour toute la vie de la page : sans ce garde-fou,
@@ -3857,6 +4893,8 @@ function brancherRecherche(){
 function rendre(){
   const h = (location.hash || '#/').slice(1);
   const p = h.split('/').filter(Boolean);
+  if(p[0] === 'en'){ langue = 'en'; p.shift(); } else { langue = 'fr'; }
+  document.documentElement.lang = langue;
   let html;
 
   if(p.length === 0)                 html = vueAccueil();
@@ -3866,22 +4904,43 @@ function rendre(){
   else if(p[0] === 'modele')         html = vueModele(decodeURIComponent(p[1]), p[2] || 0);
   else if(p[0] === 'comparateur')    html = vueComparateur(p[1]);
   else if(p[0] === 'glossaire')      html = vueGlossaire();
+  else if(p[0] === 'chronologie')    html = vueChronologie(p[1]);
   else                               html = vueIntrouvable();
 
   app.innerHTML = html;
+  if(langue === 'en'){
+    document.querySelectorAll('a[href^="#/"]').forEach(a => {
+      const h = a.getAttribute('href');
+      if(!h.startsWith('#/en')) a.setAttribute('href', h.replace('#/', '#/en/'));
+    });
+  }
+  document.querySelectorAll('[data-fr]').forEach(el => { el.textContent = T(el.dataset.fr); });
   majNav();
   brancherRecherche();
   majGarage();
+  ajusterComparateur();
 }
 
 /* ---------- Écoute globale ---------- */
 document.addEventListener('click', e => {
+  // Bascule de langue
+  const bl = e.target.closest('[data-langue]');
+  if(bl){ e.preventDefault(); changerLangue(bl.dataset.langue); return; }
+
+  // Un lien interne écrit sans préfixe est redirigé vers la langue courante
+  const a = e.target.closest('a[href^="#/"]');
+  if(a && langue === 'en' && !a.getAttribute('href').startsWith('#/en')){
+    e.preventDefault();
+    location.hash = rt(a.getAttribute('href'));
+    return;
+  }
+
   const cmp = e.target.closest('[data-compare]');
   if(cmp){ basculerCompa(cmp.dataset.compare, cmp.dataset.gen); return; }
 
   const onglet = e.target.closest('[data-gen-onglet]');
   if(onglet){
-    location.hash = `#/modele/${onglet.dataset.modele}/${onglet.dataset.genOnglet}`;
+    location.hash = rt(`#/modele/${onglet.dataset.modele}/${onglet.dataset.genOnglet}`);
     return;
   }
 
@@ -3905,9 +4964,12 @@ document.addEventListener('click', e => {
     const m = parId(gens.dataset.compareGens);
     etat.comparateur = m.gens.map((g,i) => ({ modeleId:m.id, genIndex:i })).slice(0, 6);
     majGarage();
-    location.hash = urlCompa();
+    location.hash = rt(urlCompa());
     return;
   }
+
+  const dcn = e.target.closest('[data-decennie]');
+  if(dcn){ location.hash = rt('#/chronologie' + (dcn.dataset.decennie ? '/' + dcn.dataset.decennie : '')); return; }
 
   if(e.target.closest('#raz-filtres')){
     etat.filtres = { marque:'', cat:'', a2:false, selle:'', prix:'', tri:'marque' };
@@ -3918,7 +4980,7 @@ document.addEventListener('click', e => {
     e.preventDefault();
     let x; do { x = MODELS[Math.floor(Math.random() * MODELS.length)]; }
     while(MODELS.length > 1 && location.hash.includes(x.id));
-    location.hash = '#/modele/' + x.id;
+    location.hash = rt('#/modele/' + x.id);
     return;
   }
 
@@ -3979,6 +5041,7 @@ document.body.insertAdjacentHTML('afterbegin', planche());
 
 function cleRoute(){
   const p = (location.hash || '#/').slice(1).split('/').filter(Boolean);
+  if(p[0] === 'en') p.shift();
   return p[0] === 'comparateur' ? 'comparateur' : p.slice(0,2).join('/');
 }
 let derniereCle = cleRoute();

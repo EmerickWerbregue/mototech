@@ -24,6 +24,14 @@ Pour ajouter une moto, copiez un bloc de `MODELS` et modifiez-le.
 Pour afficher une photo à la place du schéma technique, renseignez le champ
 `photo` du modèle avec une URL d'image.
 
+## Auteur et droits
+
+Site créé par **Emerick Wbg**.
+
+© 2026 Emerick Wbg. Tous droits réservés. Les textes et les schémas techniques
+de ce site sont des créations originales protégées par le droit d'auteur.
+Toute reproduction, même partielle, est soumise à autorisation.
+
 ## Crédits
 
 Chiffres relevés dans les fiches constructeur au lancement de chaque
