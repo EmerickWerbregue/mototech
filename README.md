@@ -2,17 +2,17 @@
 
 Une encyclopédie moto, par un fan pour les fans.
 
-**17 marques · 206 modèles · 269 générations · 439 repères historiques**
+**17 marques · 207 modèles · 273 générations · 445 repères historiques**
 
 Fiches techniques détaillées, différences d'une année à l'autre, histoire de
 chaque modèle, comparateur jusqu'à six machines et estimation du coût d'usage.
 
 ## Ce que contient le site
 
-- **206 modèles**, dont 91 finitions traitées comme des machines à part entière
+- **207 modèles**, dont 91 finitions traitées comme des machines à part entière
 - **22 caractéristiques** par année-modèle, renseignées à 99 %
-- **269 générations**, chacune avec sa liste de ce qui change
-- **115 historiques rédigés** et 439 repères datés, de 1901 à 2025
+- **273 générations**, chacune avec sa liste de ce qui change
+- **116 historiques rédigés** et 445 repères datés, de 1901 à 2025
 - Un **glossaire de 39 termes** expliqués en français courant
 - Une version **anglaise** accessible par un bouton
 
@@ -25,7 +25,7 @@ chaque modèle, comparateur jusqu'à six machines et estimation du coût d'usage
 | Catalogue | Filtres par catégorie, marque, permis A2, hauteur de selle et budget |
 | Modèle | Fiche technique, frise des générations, histoire, coût d'usage |
 | Comparateur | Jusqu'à six motos côte à côte, adresse partageable |
-| Chronologie | Les 439 repères de toutes les marques, filtrables par décennie |
+| Chronologie | Les 445 repères de toutes les marques, filtrables par décennie |
 | Glossaire | Le vocabulaire technique du site, sans jargon |
 
 ## Publication
